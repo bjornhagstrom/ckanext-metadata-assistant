@@ -1,0 +1,12 @@
+metadata-assistant-review:
+  output: metadata_assistant/%(version)s_review.js
+  contents:
+    - vendor/codemirror/codemirror.min.js
+    - vendor/codemirror/mark-selection.js
+    - js/review.js
+
+metadata-assistant-review-css:
+  output: metadata_assistant/%(version)s_review.css
+  contents:
+    - vendor/codemirror/codemirror.css
+    - css/review.css

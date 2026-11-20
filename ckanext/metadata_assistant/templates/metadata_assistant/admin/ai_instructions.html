@@ -1,0 +1,100 @@
+{% extends "admin/base.html" %}
+
+{% set titles = {
+  'ai_review_instructions': _('Review of title, description, keywords and theme'),
+  'ai_translation_instructions': _('Translation'),
+} %}
+
+{% block primary_content_inner %}
+  <h1>{{ _('Metadata check') }}</h1>
+  {% snippet 'metadata_assistant/admin/_nav.html', active='instructions' %}
+  {% if not ai_ready %}
+    <div class="alert alert-warning">{{ _('The AI is not set up yet, so these instructions are not used. Set it up under') }} <a href="{{ h.metadata_assistant_ai_settings_url() }}">{{ _('AI settings') }}</a>.</div>
+  {% endif %}
+
+  <p>{{ _('This is the whole instruction to the AI, for a review and for a translation. The text here is only our default: change any of it to fit this catalogue. The answer format is asked for separately in every request, and each request also carries the material to judge: the dataset, the help text of each field, the name of the catalogue and its organisation, and whether Markdown may be used. Mention them here to say how to use them.') }}</p>
+  <p class="text-muted"><small>{{ _('The built-in part is in English, which the AI follows best. Your own text can be in any language. The AI always answers in the metadata language.') }}</small></p>
+
+  {# #trial: after a trial, or a trial that failed, the page opens at the trial, its result and its errors #}
+  <form method="post" action="{{ h.url_for('metadata_assistant.ai_instructions') }}#trial">
+    {{ h.csrf_input() }}
+    {% for name in ['ai_review_instructions', 'ai_translation_instructions'] %}
+      <h2 class="h4 mt-4">{{ titles[name] }}</h2>
+
+      {% if name == 'ai_review_instructions' %}
+        <p class="text-muted"><small>{{ _('Sent with every review as well: the help text of each field, from the form. Edit a help text, and the AI follows the new one.') }}</small></p>
+      {% else %}
+        <p class="text-muted"><small>{{ _('Sent with every translation as well, per language, from the metadata schema:') }}</small></p>
+        {% if per_language %}
+          <ul class="small text-muted">
+            {% for l in per_language %}
+              <li>{{ l.language }}: {% if l.instructions %}<q>{{ l.instructions }}</q>{% else %}{{ _('no instructions') }}{% endif %}{% if l.terms %}, {% trans count=l.terms %}a glossary of {{ count }} term{% pluralize %}a glossary of {{ count }} terms{% endtrans %}{% endif %}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      {% endif %}
+
+      <label class="form-label" for="{{ name }}">{{ _('The instruction to the AI') }}
+        {% if saved[name] and not form[name] %}<span class="badge bg-info">{{ _('empty: the AI gets no instruction') }}</span>{% elif saved[name] %}<span class="badge bg-info">{{ _('saved here') }}</span>{% else %}<span class="badge bg-secondary">{{ _('the default text is used') }}</span>{% endif %}
+      </label>
+      <textarea class="form-control" id="{{ name }}" name="{{ name }}" rows="22" maxlength="{{ max_length }}" style="font-family: monospace">{{ form[name] }}</textarea>
+      {% for e in errors[name] or [] %}<span class="error-block">{{ e }}</span>{% endfor %}
+      <small class="form-text text-muted">{{ _('Emptying the field sends the AI no instruction at all. “Use the default texts” brings our default back.') }}</small>
+      {% if saved[name] %}
+        <details class="small mt-1"><summary class="text-primary" style="cursor: pointer">{{ _('Show the default text') }}</summary><pre class="small" style="white-space: pre-wrap">{{ defaults[name] }}</pre></details>
+      {% endif %}
+
+    {% endfor %}
+
+    <h2 class="h4 mt-4" id="trial">{{ _('Try on a dataset') }}</h2>
+    <p class="text-muted"><small>{{ _('Runs the AI with the texts in the form, without saving them. Nothing in the dataset changes.') }}</small></p>
+    <div class="row g-2 align-items-end">
+      <div class="col-md-6">
+        <label class="form-label" for="dataset">{{ _('Dataset') }}</label>
+        <input class="form-control" id="dataset" name="dataset" value="{{ dataset }}" placeholder="{{ _("Type part of a dataset's title or name") }}"
+               data-module="autocomplete" data-module-source="/api/2/util/dataset/autocomplete?incomplete=?">
+        {% for e in errors.dataset or [] %}<span class="error-block">{{ e }}</span>{% endfor %}
+      </div>
+      <div class="col-md-6">
+        <button class="btn btn-default btn-secondary" type="submit" name="step" value="try">{{ _('Try the review') }}</button>
+        <button class="btn btn-default btn-secondary" type="submit" name="step" value="try_translation">{{ _('Try the translation') }}</button>
+      </div>
+    </div>
+
+    {% if trial %}
+      <div class="alert alert-info mt-3">
+        <strong>{{ _('Trial with the text in the form (nothing is saved)') }}</strong>
+        {% set r = trial.result %}
+        {% if trial.kind == 'try' %}
+          {% if r.summary %}<p class="mb-2">{{ r.summary }}</p>{% endif %}
+          {% for s in r.suggestions %}
+            <div class="mb-2"><strong>{{ s.field }}:</strong> {{ s.suggested_value if s.suggested_value is string else s.suggested_value | join(', ') }}<br><small>{{ s.reason }}</small></div>
+          {% endfor %}
+          {% if r.questions_for_editor %}
+            <strong>{{ _('Questions for the editor') }}</strong>
+            <ul class="mb-0">{% for q in r.questions_for_editor %}<li>{{ q }}</li>{% endfor %}</ul>
+          {% endif %}
+        {% else %}
+          {% for s in r.suggestions %}
+            <div class="mb-2"><strong>{{ s.label }} ({{ s.language_label }}):</strong> {{ s.suggested_value if s.suggested_value is string else s.suggested_value | join(', ') }}
+              <br><small class="text-muted">{{ s.source_language_label }}: {{ s.source_value if s.source_value is string else s.source_value | join(', ') }}</small></div>
+          {% else %}
+            <p class="mb-0">{{ _('Nothing to translate in this dataset.') }}</p>
+          {% endfor %}
+          {% for f in r.failed %}<div class="text-danger">{{ f.language_label }}: {{ f.error }}</div>{% endfor %}
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="form-actions mt-4">
+      <button class="btn btn-primary" type="submit" name="step" value="save">{{ _('Save') }}</button>
+    </div>
+  </form>
+
+  {% if saved.values() | select | list %}
+    <form method="post" action="{{ h.url_for('metadata_assistant.ai_instructions') }}" class="mt-3">
+      {{ h.csrf_input() }}
+      <button class="btn btn-default btn-secondary" type="submit" name="step" value="reset">{{ _('Use the default texts') }}</button>
+    </form>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,23 @@
+# The CKAN release line under test (2.11 or 2.12); see docker-compose.test.yml and .github/workflows/test.yml.
+ARG CKAN_VERSION=2.12
+FROM ckan/ckan-base:${CKAN_VERSION}
+
+# "-e" (editable) by default. Older CKAN 2.11 images install CKAN itself with an editable finder that claims the `ckanext`
+# namespace, so an editable install of an extension is not importable there; set EXTENSION_INSTALL_FLAG to an empty string
+# for a regular install. (Not named PIP_EDITABLE: pip reads that variable itself.)
+ARG EXTENSION_INSTALL_FLAG="-e"
+
+USER root
+
+COPY . /srv/app/src_extensions/ckanext-metadata-assistant
+WORKDIR /srv/app/src_extensions/ckanext-metadata-assistant
+# COPY keeps the host's file modes; a file that is 0600 on someone's machine would be unreadable to the test user below.
+RUN chmod -R a+rX /srv/app/src_extensions/ckanext-metadata-assistant
+
+RUN pip install --no-cache-dir ${EXTENSION_INSTALL_FLAG} . && \
+    pip install --no-cache-dir -r dev-requirements.txt
+
+USER ckan
+
+ENTRYPOINT ["python", "-m", "pytest"]
+CMD ["--ckan-ini=test.ini", "-p", "no:cacheprovider", "ckanext/metadata_assistant/tests"]

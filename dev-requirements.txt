@@ -1,0 +1,5 @@
+pytest>=7,<9
+factory-boy>=3.3
+Faker>=26
+pytest-factoryboy>=2.7
+Babel>=2.14

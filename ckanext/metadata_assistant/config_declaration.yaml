@@ -1,0 +1,45 @@
+# Declared only so CKAN does not log "Option ... is not declared" for each of them at every start.
+# No option has a default here on purpose: the code supplies its own defaults, and a sysadmin can
+# override most of them on the settings pages. See the README for what each one means and defaults to.
+version: 1
+groups:
+  - annotation: ckanext-metadata-assistant
+    options:
+      - key: ckanext.metadata_assistant.profile
+        description: Which schema the rule check uses (auto, schema_file, scheming or ckan_core).
+      - key: ckanext.metadata_assistant.schema_file
+        description: Path to a ckanext-scheming schema YAML file for the rule check.
+      - key: ckanext.metadata_assistant.markdown
+        description: Whether descriptions are Markdown (auto, on or off).
+      - key: ckanext.metadata_assistant.check_addresses
+        description: Let the panel ask ckanext-link-check about an address the editor has typed (on or off).
+      - key: ckanext.metadata_assistant.ai_review_instructions
+        description: The instruction given to the AI for a review.
+      - key: ckanext.metadata_assistant.ai_translation_instructions
+        description: The instruction given to the AI for a translation.
+      - key: ckanext.metadata_assistant.landing_page_fetch
+        description: Who fetches a dataset's landing page (auto, own or provider).
+      - key: ckanext.metadata_assistant.read_page_on_open
+        description: Read the landing page in the background when an editor opens a dataset (on or off).
+      - key: ckanext.metadata_assistant.landing_page_cache_hours
+        description: How long the reading of a landing page is kept in Redis, per address (0 turns the cache off).
+      - key: ckanext.metadata_assistant.page_user_agent
+        description: The User-Agent the portal sends when it fetches a landing page.
+      - key: ckanext.metadata_assistant.jobs
+        description: Queue AI requests for a worker (auto, on or off).
+      - key: ckanext.metadata_assistant.ai_max_concurrent
+        description: Most AI calls at the same moment, across all workers (0 is no limit).
+      - key: ckanext.metadata_assistant.ai_max_per_minute
+        description: Most AI calls per minute, across all workers (0 is no limit).
+      - key: ckanext.metadata_assistant.ai_max_jobs_per_user
+        description: Most queued or running AI requests per user (0 is no limit).
+      - key: ckanext.metadata_assistant.ai_retry_pauses
+        description: Seconds to wait before each new try after a rate limit or an overloaded service.
+      - key: ckanext.metadata_assistant.ai_breaker_failures
+        description: Failures within a minute that open the circuit breaker (0 turns it off).
+      - key: ckanext.metadata_assistant.ai_slot_wait_seconds
+        description: How long a worker waits for a free place before giving up.
+      - key: ckanext.metadata_assistant.ai_max_per_user_per_day
+        description: Most AI requests per user per day, UTC (0 is no limit).
+      - key: ckanext.metadata_assistant.ai_breaker_seconds
+        description: How long all AI calls stop while the circuit breaker is open.

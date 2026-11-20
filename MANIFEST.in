@@ -1,0 +1,10 @@
+include README.md LICENSE CHANGELOG.md TROUBLESHOOTING.md SECURITY.md CONTRIBUTING.md AI_ASSISTANCE.md
+include ckanext/metadata_assistant/config_declaration.yaml
+recursive-include ckanext/metadata_assistant/templates *
+recursive-include ckanext/metadata_assistant/assets *
+recursive-include ckanext/metadata_assistant/i18n *
+recursive-include ckanext/metadata_assistant/migration *
+recursive-include ckanext/metadata_assistant/examples *.yaml
+include babel.cfg babel_ckan_tag_shims.py pytest.ini test.ini
+global-exclude *.py[cod]
+prune **/__pycache__

@@ -1,0 +1,6 @@
+{% ckan_extends %}
+
+{% block form_actions %}
+  {% snippet 'metadata_assistant/snippets/review_panel.html', data=data, pkg_dict=pkg_dict %}
+  {{ super() }}
+{% endblock %}

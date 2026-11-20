@@ -1,0 +1,42 @@
+{% extends "page.html" %}
+{#- How the metadata assistant works, written for the editor. Text only; every sentence is translatable. -#}
+{% block subtitle %}{{ _('How the metadata assistant works') }}{% endblock %}
+{% block breadcrumb_content %}<li class="active">{{ _('How the metadata assistant works') }}</li>{% endblock %}
+{% block primary_content %}
+<article class="module-content metadata-assistant-help">
+  <h1 class="page-heading">{{ _('How the metadata assistant works') }}</h1>
+  <p>{{ _('The assistant helps you write better metadata. It suggests; you decide. Nothing is saved or published automatically.') }}</p>
+
+  <h2>{{ _('Two kinds of help') }}</h2>
+  <dl>
+    <dt>{{ _('The completeness check') }}</dt>
+    <dd>{{ _('It runs by itself when you open the page and after you have changed a field, uses no AI and costs nothing. It points out what is missing or looks wrong: an empty recommended field, a very short description, a missing licence, a single keyword. "To fix" are gaps; "tips" are things that could be better.') }}</dd>
+    <dt>{{ _('AI suggestions') }}</dt>
+    <dd>{{ _('You press "Get AI suggestions". The AI reads your title, description, keywords and theme, and the landing page if you have given an address, and suggests better versions. It asks questions about what it cannot know. It takes a few seconds.') }}</dd>
+  </dl>
+
+  <h2>{{ _('What happens when you ask for AI suggestions') }}</h2>
+  <ol>
+    <li>{{ _('If the dataset has a landing page address, the page is downloaded first. The AI uses it as a source of facts for the description. A copy is kept for some hours so that the page is not fetched again for every suggestion, and the panel says how old the copy is. If you know that the page has changed, press "Download the landing page again".') }}</li>
+    <li>{{ _('The AI analyses the texts. When many people use the assistant at the same time, your request may wait in line; the panel shows your place.') }}</li>
+    <li>{{ _('The suggestions appear, each next to the current value, with the changes marked in the text. You can edit a suggestion before you use it.') }}</li>
+    <li>{{ _('You press "Use suggestion" for the ones you want. They are put into the form, not saved. Save the dataset as usual.') }}</li>
+  </ol>
+
+  <h2>{{ _('What is sent to the AI service') }}</h2>
+  <p>{{ _('Only the title, description, keywords and theme, the landing page address and what was read from that page, the name of your organisation and of the catalogue, the catalogue\'s guidelines and what the completeness check found. Never data files, resources or personal data. The administrator chooses which AI service is used.') }}</p>
+
+  <h2>{{ _('Prepared suggestions') }}</h2>
+  <p>{{ _('An administrator can have suggestions prepared in advance for many datasets. When you open such a dataset they are shown at once, marked with the time ("Suggestions prepared 10:45"), without any waiting. They are valid until the texts change. Press "Get AI suggestions" for new ones.') }}</p>
+
+  <h2>{{ _('Good to know') }}</h2>
+  <ul>
+    <li>{{ _('The AI can be wrong. Read every suggestion; you are responsible for the metadata.') }}</li>
+    <li>{{ _('It never decides about confidentiality, personal data, licence or whether data may be published.') }}</li>
+    <li>{{ _('It does not remove facts from your description, and a suggestion identical to your text is not shown.') }}</li>
+    <li>{{ _('The name of a place the data is about can be a good keyword.') }}</li>
+    <li>{{ _('If something fails, the message says what to do. If it does not help, tell an administrator.') }}</li>
+  </ul>
+</article>
+{% endblock %}
+{% block secondary_content %}{% endblock %}

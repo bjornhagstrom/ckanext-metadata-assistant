@@ -1,0 +1,175 @@
+{% asset 'metadata_assistant/metadata-assistant-review' %}
+{% asset 'metadata_assistant/metadata-assistant-review-css' %}
+
+{#- The script's texts in the page's language (2026-10-01). Same keys and
+    English source texts as STRINGS in assets/js/review.js;
+    test_i18n.py checks that the two lists match. -#}
+{%- set i18n = {
+    'severity_error': _('Error'),
+    'severity_warning': _('Needs review'),
+    'severity_info': _('Information'),
+    'rules_no_findings': _('The rule-based review found no problems.'),
+    'field_title': _('Title'),
+    'field_notes': _('Description'),
+    'field_tag_string': _('Keywords'),
+    'field_theme': _('Theme'),
+    'landing_page_notice': _('The landing page could not be read this time, so the review is based only on what is in the form. Run the review again if you want the page to be taken into account.'),
+    'translation_heading': _('Suggested translations'),
+    'translation_note': _('Machine-translated – review each suggestion before you use it. Nothing is saved until you save the dataset.'),
+    'translation_source': _('{language} (original)'),
+    'translation_value': _('Suggestion ({language})'),
+    'translation_applied_label': _('{field} ({language})'),
+    'translation_applied': _('The translation has been added to the form. Check it before you save.'),
+    'translation_field_missing': _('The field for the translation could not be found in the form.'),
+    'translation_language_failed': _('No suggestions in {language}: {error}'),
+    'translation_running': _('AI is translating title, description and keywords…'),
+    'translation_failed': _('The translation could not be completed.'),
+    'translation_failed_retry': _('The translation could not be completed. Try again.'),
+    'translation_done': _('The translation suggestions are ready.'),
+    'translation_nothing': _('There was nothing to translate.'),
+    'use_suggestion': _('Use suggestion'),
+    'unused_message': _('You have AI suggestions that are not used. What should happen to them?'),
+    'unused_save': _('Use the suggestions and save'),
+    'unused_discard': _('Discard the suggestions and save'),
+    'unused_back': _('Back to the form'),
+    'compare_current': _("Current value"),
+    'compare_empty': _("(empty)"),
+    'compare_proposal': _("Suggestion – you can edit it before you use it"),
+    'compare_proposal_add': _("Suggestion, added to the current keywords – you can edit it before you use it"),
+    'compare_choice_note': _('Themes are chosen in the list in the form.'),
+    'edit_kept': _("You have edited a suggestion, so the suggestions were not refreshed. Use it, or run the review again when you are done."),
+    'ai_nothing': _("The AI found nothing to change in this dataset. Run the review again for a second opinion."),
+    'set_ai': _("AI suggestions"),
+    'set_translation': _("Translations"),
+    'set_top': _("Move to top"),
+    'choice_new': _("Get new suggestions"),
+    'diff_edit': _("Edit"),
+    'diff_preview': _("Preview"),
+    'diff_summary': _("{added} words added, {removed} removed"),
+    'changes_heading': _("Changes from the current text ({count})"),
+    'show_removed': _("Show removed text"),
+    'keep_original': _("Keep the original"),
+    'use_whole': _("Use the whole suggestion again"),
+    'diff_none': _("No changes from the current text."),
+    'preview_loading': _("Preparing the preview…"),
+    'preview_failed': _("The preview could not be made."),
+    'set_replaced': _("New suggestions from {time} replaced the ones from {old}."),
+    'replace_edited': _("You have edited a suggestion. Replace the suggestions anyway?"),
+    'md_toolbar': _("Format the text"),
+    'md_bold': _("Bold"),
+    'md_italic': _("Italic"),
+    'md_heading': _("Heading"),
+    'md_bullets': _("Bulleted list"),
+    'md_numbers': _("Numbered list"),
+    'md_quote': _("Quote"),
+    'md_link': _("Link"),
+    'compare_blank': _("The suggestion is empty. Write a value, or leave the field as it is."),
+    'suggestion_used': _('Suggestion used'),
+    'toast_not_saved': _('Added to the form, but not saved yet. Save the dataset to keep the change.'),
+    'suggestion_applied': _('The suggestion for {field} has been added to the form. Check the content before you save.'),
+    'suggestion_field_missing': _('The field could not be found in the form. The suggestion has not been used.'),
+    'pending_suggestions': _('{count} AI suggestions to review'),
+    'questions_heading': _('Questions to consider'),
+    'rules_running': _('Checking completeness…'),
+    'rules_status_ok': _('Completeness: nothing to remark on.'),
+    'rules_status': _('Completeness: {summary}'),
+    'rules_fix': _('{count} to fix'),
+    'rules_tips': _('{count} tips'),
+    'rules_failed': _('The completeness check could not be run.'),
+    'rules_failed_contact': _('The completeness check could not be run. Try again or contact an administrator.'),
+    'address_hint_forwards': _('This address forwards to {address}.'),
+    'address_hint_https': _('This address also works over https: {address}'),
+    'address_hint_why_forwards': _('The quality check of the European data portal only counts links that answer directly, so the address it forwards to is the safer choice.'),
+    'address_hint_why_https': _('Plain http is not secure, and the link may stop working when the site only allows https. https also avoids a forward, which the quality check of the European data portal does not count.'),
+    'address_change_heading': _('What changes:'),
+    'address_change_https': _('http becomes https'),
+    'address_change_slash_added': _('a slash is added at the end'),
+    'address_change_slash_removed': _('the slash at the end is removed'),
+    'address_change_www_added': _('www is added'),
+    'address_change_www_removed': _('www is removed'),
+    'address_change_other': _('the address leads to another place, so check that it is the right page'),
+    'address_hint_use': _('Use this address'),
+    'address_hint_used': _('The address in the form has been changed. Check it before you save.'),
+    'reading_landing_page': _('Reading the landing page… the review starts when it is done.'),
+    'busy_landing_page': _('AI is reading the landing page…'),
+    'busy_reviewing': _('AI is reviewing the metadata…'),
+    'ai_updating': _('AI is generating suggestions…'),
+    'ai_running': _('AI is reviewing title, description, keywords and theme…'),
+    'ai_failed': _('The AI review could not be completed.'),
+    'ai_failed_detail': _('The AI review could not be completed: {error}'),
+    'ai_heading': _('AI suggestions'),
+    'ai_done': _('The AI review is complete. Read and assess the suggestions before you change anything.'),
+    'landing_age': _('Landing page downloaded {age}.'),
+    'flow_landing_reading': _('Downloading the landing page…'),
+    'flow_landing_needs_https': _('The landing page is only read over https, and this address starts with http://. Change it to the https address to let the AI read the page.'),
+    'flow_landing_use_https': _('Use the https address and read the page'),
+    'flow_landing_failed': _('The landing page could not be downloaded. The AI uses only the texts in the form.'),
+    'landing_notice_failed': _('The landing page was not used: {reason} The AI uses only the texts in the form.'),
+    'landing_notice_failed_plain': _('The landing page could not be read. The AI uses only the texts in the form.'),
+    'landing_retry': _('Try again'),
+    'flow_landing_none': _('No landing page address: the AI uses only the texts in the form.'),
+    'flow_ai_running': _('AI is analysing…'),
+    'flow_ai_done': _('AI suggestions are ready.'),
+    'flow_ai_failed': _('The AI analysis did not succeed.'),
+    'flow_review': _('Read the suggestions and use the ones you want. Nothing is saved until you save the dataset.'),
+    'reread_no_url': _('There is no landing page address in the form.'),
+    'job_queued': _('Waiting for a free place…'),
+    'job_queued_position': _('Waiting in line: {count} before you…'),
+    'job_timeout': _('The AI did not answer in time. Try again.'),
+    'job_lost': _('The connection was lost. Try again.'),
+    'prepared_at': _('Suggestions prepared {time}. Press the button for new ones.')
+} -%}
+{#- Target languages from the schema, named in the page's language. -#}
+{%- set languages = h.metadata_assistant_translation_languages() -%}
+{%- set language_names = languages | map(attribute='label') | join(', ') -%}
+
+<section class="metadata-assistant-review" data-metadata-assistant-review data-markdown="{{ 'true' if h.metadata_assistant_markdown_enabled() else 'false' }}" data-dataset-id="{{ data.id or '' }}" data-api-base="{{ h.url_for('/api/3/action/') }}" data-check-addresses="{{ 'true' if h.metadata_assistant_check_addresses() else 'false' }}" data-read-page-on-open="{{ 'true' if h.metadata_assistant_read_page_on_open() else 'false' }}"
+         data-i18n="{{ h.dump_json(i18n) }}"
+         data-translation-languages="{{ h.dump_json(languages | map(attribute='code') | list) }}">
+  <h2>{{ _('Review metadata') }}</h2>
+  <p class="help-block">
+    {{ _('Ask AI for clearer title, description, keywords and theme, or for translations. Only these fields are sent to the AI service. No suggestion is saved or used automatically – you review and approve each one.') }}
+  </p>
+  <details class="metadata-assistant-review__how">
+    <summary>{{ _('How it works') }}</summary>
+    <ul>
+      <li>{{ _('The completeness check runs by itself and uses no AI.') }}</li>
+      <li>{{ _('AI suggestions: you press the button. If the dataset has a landing page address, the page is downloaded first and read as a source of facts.') }}</li>
+      <li>{{ _('Each suggestion is shown next to the current value. You edit it, then use it; it goes into the form and is saved only when you save the dataset.') }}</li>
+    </ul>
+    <a href="{{ h.url_for('metadata_assistant.help') }}" target="_blank" rel="noopener">{{ _('Read more about how the assistant works') }}</a>
+  </details>
+  <div class="metadata-assistant-review__actions">
+    <button type="button" class="btn btn-primary" data-metadata-assistant-ai-start>
+      <i class="fa fa-lightbulb-o" aria-hidden="true"></i> {{ _('Get AI suggestions') }}
+    </button>
+    <button type="button" class="btn btn-outline-secondary" data-metadata-assistant-reread
+            title="{{ _('Downloads the landing page anew, for when it has changed, and uses the new version for new AI suggestions.') }}">
+      <i class="fa fa-refresh" aria-hidden="true"></i> {{ _('Download the landing page again') }}
+    </button>
+    {% if languages %}
+    <button type="button" class="btn btn-outline-secondary" data-metadata-assistant-translate-start
+            title="{{ _('Translates title, description and keywords into {languages}. The suggestions are reviewed before they are used.').format(languages=language_names) }}">
+      <i class="fa fa-language" aria-hidden="true"></i>
+      {% if languages | length == 1 %}{{ _('Suggest {language}').format(language=languages[0].label) }}{% else %}{{ _('Suggest translations') }}{% endif %}
+    </button>
+    {% endif %}
+  </div>
+  <ol class="metadata-assistant-review__flow" data-metadata-assistant-flow aria-live="polite" hidden>
+    <li data-step="landing" hidden></li>
+    <li data-step="ai" hidden></li>
+    <li data-step="review" hidden></li>
+  </ol>
+  <div class="metadata-assistant-review__ai-status" data-metadata-assistant-ai-status aria-live="polite"></div>
+  <div class="metadata-assistant-review__status" data-metadata-assistant-translate-status aria-live="polite"></div>
+  {#- Every run is kept as its own box, the newest on top (see review.js, createResultStack). -#}
+  <div class="metadata-assistant-review__stack" data-metadata-assistant-stack></div>
+  {#- The automatic completeness check comes after the AI suggestions, open by default, under a heading of its own: it is
+      the portal's rules, without AI, and it follows the form as it is now (a suggestion used above is checked again). -#}
+  <h3 class="h6 mt-3 mb-1">{{ _('Rule check') }}</h3>
+  <p class="small text-muted mb-1">{{ _('The catalogue\'s rules, checked without AI against the form as it is now: what is missing or needs looking at. It updates when you change a field or use a suggestion.') }}</p>
+  <details class="metadata-assistant-review__rules" open>
+    <summary class="metadata-assistant-review__status" data-metadata-assistant-status aria-live="polite"></summary>
+    <div class="metadata-assistant-review__results" data-metadata-assistant-results></div>
+  </details>
+</section>

@@ -1,0 +1,45 @@
+name: Tests
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  pytest:
+    # Every supported CKAN release line: 2.11.1 (the oldest supported release), the newest 2.11 patch, and 2.12. The tests
+    # load metadata_assistant and ai_connector (installed from PyPI as a dependency).
+    name: CKAN ${{ matrix.ckan }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - ckan: "2.11.1"
+            solr: "2.11"
+          - ckan: "2.11"
+            solr: "2.11"
+          - ckan: "2.12"
+            solr: "2.12"
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run test suite (isolated docker-compose stack)
+        env:
+          CKAN_VERSION: ${{ matrix.ckan }}
+          SOLR_VERSION: ${{ matrix.solr }}
+        run: |
+          docker compose -f docker-compose.test.yml up \
+            --build --abort-on-container-exit --exit-code-from tests
+          docker compose -f docker-compose.test.yml down -v
+
+  javascript:
+    name: JavaScript
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Run the review panel's tests
+        run: node --test ckanext/metadata_assistant/tests/js/test_review.js

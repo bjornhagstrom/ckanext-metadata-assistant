@@ -1,0 +1,57 @@
+{% extends "admin/base.html" %}
+{#-
+  Translation proposals. The AI's suggestions for datasets that lack a translation are shown
+  next to the source text; nothing is saved until an editor applies one. Plain forms.
+-#}
+{# No sidebar: CKAN then gives the page its full width. #}
+{% block secondary %}{% endblock %}
+{% block subtitle %}{{ _('Translation proposals') }}{% endblock %}
+{% block breadcrumb_content %}<li class="active">{{ _('Translation proposals') }}</li>{% endblock %}
+{% block primary_content_inner %}
+  <h1 class="page-heading">{{ _('Translation proposals') }}</h1>
+  <p>{{ _('These are machine translations that nobody has read yet. Compare each one with the source text, correct it if needed, and then apply it. Nothing changes in a dataset until you apply a proposal. You only see the datasets you may edit.') }}</p>
+  {% if not cards %}
+    <p data-nothing-to-review>{{ _('There are no proposals to review.') }}</p>
+  {% else %}
+  <form method="post" action="{{ h.url_for('metadata_assistant.translations_decide') }}">
+    {{ h.csrf_input() }}
+    <input type="hidden" name="page" value="{{ pager.page }}">
+    {% for card in cards %}
+      {% set pid = card.item.id %}
+      <section class="module module-narrow mb-4 p-3 border rounded" data-proposal="{{ pid }}">
+        <h2 class="h5 mb-1"><a href="{{ h.url_for('dataset.read', id=card.dataset.name) }}">{{ card.dataset.title or card.dataset.name }}</a></h2>
+        <p class="text-muted small mb-2">{% if card.dataset.organization %}{{ card.dataset.organization.title }} · {% endif %}{{ _('Proposed') }} {{ card.item.created.strftime('%Y-%m-%d') }} · <strong>{{ _('Machine-translated: check before applying') }}</strong></p>
+        {% for s in card.suggestions %}
+          <div class="row g-2 mb-3">
+            <div class="col-md-6">
+              <label class="form-label small mb-1">{{ s.label }}, {{ s.source_language_label }}</label>
+              <div class="border rounded p-2 bg-light" style="white-space: pre-wrap;">{{ s.source_value if s.source_value is string else (s.source_value or []) | join(', ') }}</div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label small mb-1" for="e-{{ pid }}-{{ loop.index }}">{{ s.label }}, {{ s.language_label }}</label>
+              {% if s.suggested_value is string %}
+                <textarea class="form-control" rows="{{ 6 if s.field == 'notes' else 2 }}" id="e-{{ pid }}-{{ loop.index }}" name="edit__{{ pid }}__{{ s.edit_key }}">{{ s.suggested_value }}</textarea>
+              {% else %}
+                <input class="form-control" id="e-{{ pid }}-{{ loop.index }}" name="edit__{{ pid }}__{{ s.edit_key }}" value="{{ s.suggested_value | join(', ') }}">
+                <div class="form-text">{{ _('Keywords, separated by commas. They are added to the ones already there.') }}</div>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+        <div class="d-flex flex-wrap gap-2 align-items-center">
+          <button type="submit" class="btn btn-primary btn-sm" name="apply_one" value="{{ pid }}">{{ _('Apply') }}</button>
+          <button type="submit" class="btn btn-outline-secondary btn-sm" name="reject_one" value="{{ pid }}">{{ _('Reject') }}</button>
+          <div class="form-check ms-3">
+            <input class="form-check-input" type="checkbox" name="ticked" value="{{ pid }}" id="t-{{ pid }}">
+            <label class="form-check-label checkbox" for="t-{{ pid }}">{{ _('I have read this and it can be applied') }}</label>
+          </div>
+        </div>
+      </section>
+    {% endfor %}
+    <div class="mb-3">
+      <button type="submit" class="btn btn-primary" name="apply_ticked" value="1">{{ _('Apply the ticked proposals') }}</button>
+    </div>
+  </form>
+  {% if pager.item_count > pager.items_per_page %}{{ pager.pager() }}{% endif %}
+  {% endif %}
+{% endblock %}

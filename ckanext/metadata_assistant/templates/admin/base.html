@@ -1,0 +1,7 @@
+{% ckan_extends %}
+
+{% block content_primary_nav %}
+  {{ super() }}
+  {{ h.build_nav_icon('metadata_assistant.overview', _('Metadata check'), icon='check') }}
+  {{ h.build_nav_icon('metadata_assistant.translations', _('Translation proposals'), icon='language') }}
+{% endblock %}

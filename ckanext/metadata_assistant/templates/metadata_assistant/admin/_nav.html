@@ -1,0 +1,7 @@
+<ul class="nav nav-pills mb-3">
+  <li class="nav-item"><a class="nav-link {% if active == 'overview' %}active{% endif %}" href="{{ h.url_for('metadata_assistant.overview') }}">{{ _('Catalogue overview') }}</a></li>
+  <li class="nav-item"><a class="nav-link {% if active == 'check' %}active{% endif %}" href="{{ h.url_for('metadata_assistant.check_settings') }}">{{ _('Check settings') }}</a></li>
+  <li class="nav-item"><a class="nav-link {% if active == 'instructions' %}active{% endif %}" href="{{ h.url_for('metadata_assistant.ai_instructions') }}">{{ _('Instructions to the AI') }}</a></li>
+  {# The connection to the AI is shared by every extension that uses it: its page is ckanext-ai-connector's (the link goes there). #}
+  <li class="nav-item"><a class="nav-link" href="{{ h.metadata_assistant_ai_settings_url() }}">{{ _('AI settings') }}</a></li>
+</ul>

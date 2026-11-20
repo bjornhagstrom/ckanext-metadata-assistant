@@ -1,0 +1,38 @@
+{% extends "admin/base.html" %}
+
+{% block primary_content_inner %}
+  <h1>{{ _('Catalogue overview') }}</h1>
+  {% snippet 'metadata_assistant/admin/_nav.html', active='overview' %}
+  <p>{{ _('What the rule check finds across all datasets. The rules work without any AI and change nothing. Click a row to see which datasets it concerns.') }}</p>
+  {% set total = overview.datasets %}
+  {% if not total %}
+    <p>{{ _('There are no datasets yet.') }}</p>
+  {% elif not overview.findings %}
+    <p>{{ _('The rule check has nothing to say about any of the {count} datasets.').format(count=h.metadata_assistant_number(total)) }}</p>
+  {% else %}
+    <p class="text-muted">{{ _('{count} datasets were checked.').format(count=h.metadata_assistant_number(total)) }}</p>
+    <table class="table table-sm">
+      <thead><tr>
+        <th scope="col">{{ _('Finding') }}</th><th scope="col">{{ _('Field') }}</th><th scope="col">{{ _('Datasets') }}</th><th scope="col">{{ _('Share') }}</th>
+      </tr></thead>
+      <tbody>
+        {% for item in overview.findings %}
+          <tr>
+            <td>
+              <details>
+                <summary>{{ item.message }}</summary>
+                <ul class="mt-2">
+                  {% for d in item.datasets %}<li><a href="{{ h.url_for('dataset.edit', id=d.name) }}">{{ d.title }}</a></li>{% endfor %}
+                </ul>
+                {% if item.count > item.datasets|length %}<p class="text-muted">{{ _('Showing {shown} of {all}.').format(shown=h.metadata_assistant_number(item.datasets|length), all=h.metadata_assistant_number(item.count)) }}</p>{% endif %}
+              </details>
+            </td>
+            <td>{{ item.label or '–' }}</td>
+            <td>{{ h.metadata_assistant_number(item.count) }}</td>
+            <td>{{ h.metadata_assistant_percent(item.count, total) }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
+{% endblock %}

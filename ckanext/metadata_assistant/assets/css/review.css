@@ -1,0 +1,188 @@
+.metadata-assistant-review { border: 1px solid #d8d8d8; border-radius: 3px; margin: 1.5rem 0; padding: 1rem 1.25rem; }
+.metadata-assistant-review h2 { font-size: 1.25rem; margin-top: 0; }
+.metadata-assistant-review__actions { display: flex; flex-wrap: wrap; gap: .5rem; }
+.metadata-assistant-review__status, .metadata-assistant-review__ai-status { margin-top: .75rem; }
+.metadata-assistant-review__list { list-style: none; margin: 1rem 0 0; padding: 0; }
+.metadata-assistant-review__finding { border-left: 4px solid #337ab7; margin-bottom: .75rem; padding: .6rem .8rem; }
+.metadata-assistant-review__finding--error { border-color: #a94442; }
+.metadata-assistant-review__finding--warning { border-color: #8a6d3b; }
+.metadata-assistant-review__finding strong, .metadata-assistant-review__finding span { display: block; }
+.metadata-assistant-review__ai-results { background: #f5f9fc; border: 1px solid #d4e4ef; margin-top: .75rem; padding: 1rem; }
+.metadata-assistant-review__ai-results h3 { font-size: 1.1rem; margin: 0 0 .75rem; }
+.metadata-assistant-review__suggestion { border-left: 4px solid #337ab7; margin-bottom: .75rem; padding: .6rem .8rem; }
+.metadata-assistant-review__suggestion--applied { border-color: #3c763d; background: #eef7ee; }
+/* 2026-09-09: applied suggestions collapse to one line (label + the
+   "suggestion used" button), see review.js#applySuggestion click. */
+.metadata-assistant-review__suggestion--applied { display: flex; align-items: center; gap: .5rem; padding: .35rem .8rem; }
+.metadata-assistant-review__suggestion--applied .metadata-assistant-review__apply { margin-top: 0; }
+.metadata-assistant-review__suggestion-value { display: block; margin-top: .35rem; white-space: pre-wrap; }
+.metadata-assistant-review__apply { display: block; margin: .75rem 0 0 auto; font-weight: 600; }   /* to the right, like the other buttons of the form */
+.metadata-assistant-review__unused { border: 1px solid #ccc; border-radius: 6px; padding: 1.25rem; max-width: 32rem; }
+.metadata-assistant-review__unused::backdrop { background: rgba(0, 0, 0, .4); }
+.metadata-assistant-review__unused p { font-size: 1.1rem; margin-bottom: 1rem; }
+.metadata-assistant-review__unused-buttons { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .5rem; }
+.metadata-assistant-review__questions { margin-bottom: 0; }
+
+/* 2026-09-09: a short highlight on the field that just had an AI suggestion
+   applied, so one sees which field changed without the page scrolling
+   away from the review panel. */
+.metadata-assistant-review__field-flash { animation: metadata-assistant-field-flash 1.6s ease-out; border-radius: 3px; }
+@keyframes metadata-assistant-field-flash {
+  0% { box-shadow: 0 0 0 3px rgba(60, 118, 61, .55); background-color: #eef7ee; }
+  100% { box-shadow: 0 0 0 3px rgba(60, 118, 61, 0); background-color: transparent; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .metadata-assistant-review__field-flash { animation: none; box-shadow: 0 0 0 3px rgba(60, 118, 61, .55); }
+}
+
+
+/* 2026-09-23: shown when a landing page was supplied but could not be read.
+   Informational, not an error -- the review is still valid, just narrower. */
+.metadata-assistant-review__notice {
+  margin: 0 0 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border-left: 3px solid #b8860b;
+  background: rgba(184, 134, 11, 0.08);
+  font-size: 0.9em;
+}
+/* 2026-09-30: translation suggestions show the original above the suggestion. */
+.metadata-assistant-review__source { display: block; margin-top: .35rem; padding: .4rem .6rem; background: #f6f6f6; color: #444; white-space: pre-wrap; max-height: 14rem; overflow-y: auto; }
+.metadata-assistant-review__source small,
+.metadata-assistant-review__suggestion-value small { display: block; font-weight: 600; color: #555; }
+/* 2026-09-30: a small fixed button when new AI suggestions are further down. */
+.metadata-assistant-review__new-suggestions { position: fixed; right: 1.5rem; bottom: 1.5rem; z-index: 1050; border: 2px solid #fff; border-radius: 999px; padding: .75rem 1.4rem; background: #1f5c99; color: #fff; font-size: 1.05rem; font-weight: 600; box-shadow: 0 4px 14px rgba(0, 0, 0, .3); cursor: pointer; }
+.metadata-assistant-review__new-suggestions:hover,
+.metadata-assistant-review__new-suggestions:focus { background: #23527c; }
+.metadata-assistant-review__new-suggestions[hidden] { display: none; }
+
+/* 2026-10-01: while the AI works, the status line in the panel is as clear
+   as the floating button, which hides when the panel is in view. */
+.metadata-assistant-review__ai-status.is-busy,
+.metadata-assistant-review__status.is-busy {
+  padding: .6rem .9rem;
+  border-left: 4px solid #1f5c99;
+  border-radius: 4px;
+  background: #e8f1fa;
+  color: #123a63;
+  font-weight: 600;
+}
+.metadata-assistant-review__ai-status.is-busy::before,
+.metadata-assistant-review__status.is-busy::before {
+  content: "";
+  display: inline-block;
+  width: .9em;
+  height: .9em;
+  margin-right: .5em;
+  vertical-align: -.1em;
+  border: 2px solid #1f5c99;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: metadata-assistant-spin .8s linear infinite;
+}
+@keyframes metadata-assistant-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .metadata-assistant-review__ai-status.is-busy::before,
+  .metadata-assistant-review__status.is-busy::before { animation: none; }
+}
+
+/* The original and the suggestion side by side; the suggestion can be edited before it is used. */
+.metadata-assistant-review__compare { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-top: .35rem; }
+.metadata-assistant-review__compare .metadata-assistant-review__source { border-right: 1px solid #d4e4ef; padding-right: .75rem; white-space: pre-wrap; }
+.metadata-assistant-review__compare small { display: block; font-weight: 600; color: #555; }
+.metadata-assistant-review__edit { width: 100%; margin-top: .25rem; resize: vertical; }
+@media (max-width: 700px) { .metadata-assistant-review__compare { grid-template-columns: 1fr; } .metadata-assistant-review__compare .metadata-assistant-review__source { border-right: 0; padding-right: 0; } }
+
+/* Each run is a box of its own, the newest on top; older ones stay below. */
+.metadata-assistant-review__stack { margin-top: .75rem; }
+.metadata-assistant-review__set { margin-bottom: .75rem; }
+.metadata-assistant-review__set-title { cursor: pointer; padding: .25rem 0; }
+.metadata-assistant-review__set-title time { color: #555; margin-left: .25rem; }
+.metadata-assistant-review__set-top { margin-left: .5rem; }
+.metadata-assistant-review__set-top[hidden] { display: none; }
+.metadata-assistant-review__set-new { float: right; }
+.metadata-assistant-review__set-new[hidden] { display: none; }
+.metadata-assistant-review__set-flash { animation: metadata-assistant-set-flash 2s ease-out; border-radius: 3px; }
+@keyframes metadata-assistant-set-flash {
+  0% { box-shadow: 0 0 0 5px rgba(51, 122, 183, .75); background-color: #d6e9f8; }
+  60% { box-shadow: 0 0 0 5px rgba(51, 122, 183, .35); background-color: #e8f2fa; }
+  100% { box-shadow: 0 0 0 5px rgba(51, 122, 183, 0); background-color: transparent; }
+}
+@media (prefers-reduced-motion: reduce) { .metadata-assistant-review__set-flash { animation: none; background-color: #e8f2fa; } }
+
+/* The changes view: added in green, removed in red and struck through; toggle buttons above the suggestion. */
+.metadata-assistant-review__tabs { display: flex; gap: .25rem; margin: .25rem 0; }
+.metadata-assistant-review__tab[aria-pressed="true"] { background: #337ab7; border-color: #2e6da4; color: #fff; }
+.metadata-assistant-review__diff-pane, .metadata-assistant-review__preview { white-space: pre-wrap; margin-top: .25rem; }
+.metadata-assistant-review__preview { white-space: normal; background: #fff; border: 1px solid #d4e4ef; padding: .5rem .75rem; }
+.metadata-assistant-review__diff ins.metadata-assistant-review__add { background: #dff0d8; color: #1f5d1f; text-decoration: none; }
+.metadata-assistant-review__diff del.metadata-assistant-review__del { background: #f2dede; color: #8c2f2f; }
+.metadata-assistant-review__fold { padding: 0 .25rem; font-size: .9em; }
+.metadata-assistant-review__diff-summary { display: block; color: #555; font-weight: 600; }
+/* The current text is shown as plain text on the page, in full, not in a box. */
+.metadata-assistant-review__compare .metadata-assistant-review__source { background: none; max-height: none; overflow: visible; padding: 0 .75rem 0 0; color: inherit; }
+.metadata-assistant-review__toolbar { display: flex; flex-wrap: wrap; gap: .25rem; margin: .25rem 0; }
+.metadata-assistant-review__changes { margin-top: .5rem; }
+.metadata-assistant-review__changes-head { display: flex; justify-content: space-between; gap: .5rem; align-items: baseline; }
+.metadata-assistant-review__show-removed { font-weight: normal; margin: 0; }
+.metadata-assistant-review__change-list { list-style: decimal; margin: .35rem 0 0; padding-left: 1.5rem; }
+.metadata-assistant-review__change-list li { margin-bottom: .5rem; }
+.metadata-assistant-review__change { white-space: pre-wrap; }
+.metadata-assistant-review__context { color: #777; }
+.metadata-assistant-review__change ins.metadata-assistant-review__add { background: #dff0d8; color: #1f5d1f; text-decoration: none; }
+.metadata-assistant-review__change del.metadata-assistant-review__del { background: #f2dede; color: #8c2f2f; }
+.metadata-assistant-review__keep { margin-top: .15rem; }
+/* CodeMirror (the description suggestion): the editor grows with its text; additions are marked in the text itself. */
+.metadata-assistant-review__edit + .CodeMirror, .metadata-assistant-review__suggestion-value .CodeMirror {
+  height: auto; font: inherit; line-height: 1.45; border: 1px solid #ccc; border-radius: 3px; background: #fff; color: inherit; }
+.metadata-assistant-review__suggestion-value .CodeMirror-scroll { height: auto; overflow-y: hidden !important; min-height: 4rem; }
+.metadata-assistant-review__add-mark { background: #dff0d8; color: #1f5d1f; }
+.metadata-assistant-review__piece { display: inline-block; vertical-align: baseline; }
+.metadata-assistant-review__piece del.metadata-assistant-review__del { background: #f2dede; color: #8c2f2f; white-space: normal; }
+.metadata-assistant-review__restore { border: 1px solid #bbb; border-radius: 50%; background: #fff; color: #555; width: 1.4em; height: 1.4em; line-height: 1; padding: 0; margin: 0 .15em; font-size: .85em; cursor: pointer; }
+.metadata-assistant-review__restore:hover, .metadata-assistant-review__restore:focus { background: #337ab7; color: #fff; border-color: #2e6da4; }
+/* Selected text must show over the green of added words: CodeMirror's own selection is drawn behind the text. */
+.metadata-assistant-review__suggestion-value .CodeMirror-selectedtext { background: #9ec5fe !important; color: #000 !important; }
+.metadata-assistant-review__suggestion-value .CodeMirror-selected, .metadata-assistant-review__suggestion-value .CodeMirror-focused .CodeMirror-selected { background: #9ec5fe; }
+.metadata-assistant-review__add-mark { background: #e3f3dc; border-bottom: 2px solid #7fc17b; }
+
+/* The flow: landing page, AI analysis, reading the suggestions. */
+.metadata-assistant-review__flow { list-style: none; margin: 0.5rem 0; padding: 0; }
+.metadata-assistant-review__flow-step { padding: 0.15rem 0 0.15rem 1.4rem; position: relative; }
+.metadata-assistant-review__flow-step::before { content: "○"; position: absolute; left: 0; }
+.metadata-assistant-review__flow-step--active::before { content: "◔"; }
+.metadata-assistant-review__flow-step--done::before { content: "✓"; color: #1a7f37; }
+.metadata-assistant-review__flow-step--failed::before { content: "!"; color: #b42318; font-weight: bold; }
+.metadata-assistant-review__flow-step--none::before { content: "–"; }
+.metadata-assistant-review__how { margin: 0.25rem 0 0.75rem; }
+.metadata-assistant-review__how summary { cursor: pointer; }
+.metadata-assistant-review__rules summary { cursor: pointer; }
+
+.metadata-assistant-address-hint {
+  margin-top: 0.35rem;
+  padding: 0.4rem 0.6rem;
+  border-left: 3px solid #1f6feb;
+  background: #eef4fd;
+  font-size: 0.9rem;
+}
+.metadata-assistant-address-hint__why {
+  margin-top: 0.25rem;
+  color: #57606a;
+  font-size: 0.85rem;
+}
+.metadata-assistant-address-hint__what {
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.metadata-assistant-address-hint__use {
+  display: block;
+  margin: 0.5rem 0 0.25rem;
+}
+.metadata-assistant-review__use-address {
+  display: block;
+  margin-top: 0.4rem;
+}
+
+.metadata-assistant-review__toast { position: fixed; top: 1rem; right: 1rem; z-index: 2000; max-width: 22rem; padding: .75rem 1rem; border-radius: 6px; background: #1b3a5c; color: #fff; box-shadow: 0 4px 14px rgba(0, 0, 0, .3); cursor: pointer; animation: metadata-assistant-toast-in .2s ease-out; }
+.metadata-assistant-review__toast[hidden] { display: none; }
+@keyframes metadata-assistant-toast-in { from { opacity: 0; transform: translateY(-.5rem); } to { opacity: 1; transform: none; } }

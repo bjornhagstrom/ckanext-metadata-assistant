@@ -1,0 +1,1827 @@
+# Translations template for PROJECT.
+# Copyright (C) 2026 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-11-19 23:12+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ckanext/metadata_assistant/actions.py:95
+msgid "Invalid page summary."
+msgstr ""
+
+#: ckanext/metadata_assistant/actions.py:251
+#: ckanext/metadata_assistant/page_fetch.py:85
+msgid "The landing page must be a public https address."
+msgstr ""
+
+#: ckanext/metadata_assistant/actions.py:279
+#: ckanext/metadata_assistant/actions.py:283
+#: ckanext/metadata_assistant/llm/assistant.py:194
+msgid "The chosen AI provider cannot read landing pages."
+msgstr ""
+
+#: ckanext/metadata_assistant/actions.py:517
+msgid "The profile has no fields for translation."
+msgstr ""
+
+#: ckanext/metadata_assistant/actions.py:522
+msgid "None of the requested languages is a target language."
+msgstr ""
+
+#: ckanext/metadata_assistant/actions.py:530
+#, python-brace-format
+msgid "There is no text in {language} to translate yet."
+msgstr ""
+
+#: ckanext/metadata_assistant/actions.py:561
+msgid "The chosen AI provider cannot translate."
+msgstr ""
+
+#: ckanext/metadata_assistant/admin_settings.py:59
+msgid "Choose auto, on or off."
+msgstr ""
+
+#: ckanext/metadata_assistant/admin_settings.py:66
+#: ckanext/metadata_assistant/admin_settings.py:90
+msgid "Choose on or off."
+msgstr ""
+
+#: ckanext/metadata_assistant/admin_settings.py:76
+msgid "Choose auto, own or provider."
+msgstr ""
+
+#: ckanext/metadata_assistant/admin_settings.py:97
+#, python-brace-format
+msgid "Keep the instructions under {count} characters."
+msgstr ""
+
+#: ckanext/metadata_assistant/ai.py:21
+msgid "The AI features need ckanext-ai-connector, which is not installed."
+msgstr ""
+
+#: ckanext/metadata_assistant/checks.py:30
+#: ckanext/metadata_assistant/checks.py:32
+#: ckanext/metadata_assistant/checks.py:33
+msgid "Database"
+msgstr ""
+
+#: ckanext/metadata_assistant/checks.py:32
+msgid "The assistant's tables exist."
+msgstr ""
+
+#: ckanext/metadata_assistant/checks.py:33
+msgid "The assistant's tables are missing or out of date."
+msgstr ""
+
+#: ckanext/metadata_assistant/checks.py:45
+msgid "AI settings from before"
+msgstr ""
+
+#: ckanext/metadata_assistant/checks.py:46
+#, python-brace-format
+msgid ""
+"Settings for the AI connection are still under this extension's old names"
+" ({names}) and are no longer used."
+msgstr ""
+
+#: ckanext/metadata_assistant/checks.py:52
+#: ckanext/metadata_assistant/checks.py:54
+msgid "AI"
+msgstr ""
+
+#: ckanext/metadata_assistant/checks.py:52
+msgid "Only the rule-based review works."
+msgstr ""
+
+#: ckanext/metadata_assistant/checks.py:54
+#, python-brace-format
+msgid "The shared AI connection is ready ({model})."
+msgstr ""
+
+#: ckanext/metadata_assistant/checks.py:76
+#: ckanext/metadata_assistant/checks.py:78
+#: ckanext/metadata_assistant/checks.py:84
+msgid "Metadata schema"
+msgstr ""
+
+#: ckanext/metadata_assistant/checks.py:80
+#, python-format
+msgid "the schema file %s"
+msgstr ""
+
+#: ckanext/metadata_assistant/checks.py:81
+msgid "the schema loaded by ckanext-scheming"
+msgstr ""
+
+#: ckanext/metadata_assistant/checks.py:82
+msgid "CKAN's own fields (no schema)"
+msgstr ""
+
+#: ckanext/metadata_assistant/checks.py:108
+msgid "Landing page"
+msgstr ""
+
+#: ckanext/metadata_assistant/checks.py:111
+msgid ""
+"The schema has no landing page field (url), so the AI has only the texts "
+"in the form to go on."
+msgstr ""
+
+#: ckanext/metadata_assistant/checks.py:112
+msgid "Add the field url (dcat:landingPage) to the dataset schema."
+msgstr ""
+
+#: ckanext/metadata_assistant/checks.py:114
+msgid ""
+"Make the landing page recommended: url: recommended in the file named by "
+"ckanext.field_levels.file."
+msgstr ""
+
+#: ckanext/metadata_assistant/checks.py:117
+msgid ""
+"The landing page field is hidden in the form, so editors cannot give the "
+"AI the page to read."
+msgstr ""
+
+#: ckanext/metadata_assistant/checks.py:120
+msgid ""
+"The landing page field is optional, so the form folds it away and editors"
+" may not fill it in. The AI suggestions are much better with the page."
+msgstr ""
+
+#: ckanext/metadata_assistant/checks.py:124
+msgid ""
+"The rule check does not ask for a landing page, though the AI suggestions"
+" are much better with the page."
+msgstr ""
+
+#: ckanext/metadata_assistant/checks.py:126
+msgid "Mark the field url with field_level: recommended in the dataset schema."
+msgstr ""
+
+#: ckanext/metadata_assistant/checks.py:128
+msgid "The form asks for a landing page, which the AI reads for its suggestions."
+msgstr ""
+
+#: ckanext/metadata_assistant/checks.py:135
+#: ckanext/metadata_assistant/checks.py:139
+msgid "Languages"
+msgstr ""
+
+#: ckanext/metadata_assistant/checks.py:136
+msgid "The schema has no multilingual fields, so translation suggestions are off."
+msgstr ""
+
+#: ckanext/metadata_assistant/checks.py:137
+msgid "Add multilingual fields (ckanext-fluent) to the schema to use them."
+msgstr ""
+
+#: ckanext/metadata_assistant/checks.py:148
+#: ckanext/metadata_assistant/checks.py:151
+msgid "Guidelines for the AI"
+msgstr ""
+
+#: ckanext/metadata_assistant/checks.py:149
+msgid "The AI has no guidelines for any field, so it judges by its own taste."
+msgstr ""
+
+#: ckanext/metadata_assistant/checks.py:150
+msgid "Add help texts to the schema's fields."
+msgstr ""
+
+#: ckanext/metadata_assistant/checks.py:152
+#, python-format
+msgid ""
+"%d fields have guidelines (the schema's help texts, else the built-in "
+"baseline)."
+msgstr ""
+
+#: ckanext/metadata_assistant/checks.py:158
+msgid "Background work"
+msgstr ""
+
+#: ckanext/metadata_assistant/checks.py:164
+msgid "Redis is not reachable, so AI requests run in the page."
+msgstr ""
+
+#: ckanext/metadata_assistant/checks.py:165
+msgid "Check CKAN's Redis settings."
+msgstr ""
+
+#: ckanext/metadata_assistant/checks.py:173
+msgid "Off: AI requests run in the page."
+msgstr ""
+
+#: ckanext/metadata_assistant/checks.py:175
+#, python-format
+msgid "%d worker(s) listening, %d request(s) waiting, %d prepared review(s)."
+msgstr ""
+
+#: ckanext/metadata_assistant/checks.py:178
+msgid "the AI service limited us"
+msgstr ""
+
+#: ckanext/metadata_assistant/checks.py:178
+msgid "the AI service stopped answering"
+msgstr ""
+
+#: ckanext/metadata_assistant/checks.py:179
+msgid "requests waited too long for a free place"
+msgstr ""
+
+#: ckanext/metadata_assistant/checks.py:179
+msgid "a person reached their limit"
+msgstr ""
+
+#: ckanext/metadata_assistant/checks.py:181
+#, python-format
+msgid "Limits reached today (%s)."
+msgstr ""
+
+#: ckanext/metadata_assistant/checks.py:182
+msgid "If this is common, use a stronger AI model or plan, or raise the limits."
+msgstr ""
+
+#: ckanext/metadata_assistant/checks.py:185
+#, python-format
+msgid "The AI service has failed repeatedly; requests wait %d seconds."
+msgstr ""
+
+#: ckanext/metadata_assistant/checks.py:188
+msgid "Requests are queued but no worker is listening."
+msgstr ""
+
+#: ckanext/metadata_assistant/checks.py:190
+msgid ""
+"No worker: AI requests run in the page, which is fine for a few editors. "
+"When several work at once (a training session, a large organisation) a "
+"request holds a web worker for seconds to minutes; start a worker and "
+"requests are queued automatically, with no other change."
+msgstr ""
+
+#: ckanext/metadata_assistant/jobs.py:120
+#: ckanext/metadata_assistant/jobs.py:132
+#: ckanext/metadata_assistant/jobs.py:304
+msgid "The AI request failed."
+msgstr ""
+
+#: ckanext/metadata_assistant/jobs.py:201
+msgid "Unknown kind of AI request."
+msgstr ""
+
+#: ckanext/metadata_assistant/jobs.py:296
+msgid "The AI request is no longer there. Start it again."
+msgstr ""
+
+#: ckanext/metadata_assistant/jobs.py:306
+msgid "The AI request did not finish. Try again."
+msgstr ""
+
+#: ckanext/metadata_assistant/limits.py:183
+msgid "The daily limit of AI requests is reached. Try again tomorrow."
+msgstr ""
+
+#: ckanext/metadata_assistant/limits.py:192
+#, python-format
+msgid ""
+"You already have %d AI requests waiting or running. Wait for one to "
+"finish."
+msgstr ""
+
+#: ckanext/metadata_assistant/limits.py:238
+#, python-format
+msgid "The AI service is not answering right now. Try again in %d seconds."
+msgstr ""
+
+#: ckanext/metadata_assistant/limits.py:245
+#: ckanext/metadata_assistant/limits.py:252
+msgid "The AI service is busy. Try again in a minute."
+msgstr ""
+
+#: ckanext/metadata_assistant/link_results.py:38
+#, python-brace-format
+msgid ""
+"The link check found that the address '{address}' forwards to '{final}'. "
+"The EU quality check only counts links that answer directly: use the "
+"address it forwards to."
+msgstr ""
+
+#: ckanext/metadata_assistant/link_results.py:44
+#, python-brace-format
+msgid "The link check found that the address '{address}' does not work."
+msgstr ""
+
+#: ckanext/metadata_assistant/link_results.py:95
+#, python-brace-format
+msgid ""
+"The address '{address}' forwards to '{final}' (checked just now). The EU "
+"quality check only counts links that answer directly: use the address it "
+"forwards to."
+msgstr ""
+
+#: ckanext/metadata_assistant/link_results.py:102
+#, python-brace-format
+msgid ""
+"The address '{address}' also answers over https (checked just now). Use "
+"that address: it is the secure one."
+msgstr ""
+
+#: ckanext/metadata_assistant/link_results.py:108
+#, python-brace-format
+msgid ""
+"The address '{address}' forwards to '{final}' (checked just now). Check "
+"that it is the right page before you use it."
+msgstr ""
+
+#: ckanext/metadata_assistant/link_results.py:113
+#, python-brace-format
+msgid ""
+"The address '{address}' did not answer just now. Check that it is spelled"
+" right."
+msgstr ""
+
+#: ckanext/metadata_assistant/multilingual.py:77
+msgid "Missing value"
+msgstr ""
+
+#: ckanext/metadata_assistant/multilingual.py:78
+msgid "Text in the default language is missing."
+msgstr ""
+
+#: ckanext/metadata_assistant/page_fetch.py:87
+msgid ""
+"The landing page is not on a public address (an internal or private "
+"network, or a name that does not exist). Such pages are not read."
+msgstr ""
+
+#: ckanext/metadata_assistant/page_fetch.py:91
+#: ckanext/metadata_assistant/page_fetch.py:118
+msgid "The landing page took too long to answer."
+msgstr ""
+
+#: ckanext/metadata_assistant/page_fetch.py:96
+#: ckanext/metadata_assistant/page_fetch.py:101
+#: ckanext/metadata_assistant/page_fetch.py:121
+msgid "The landing page could not be reached."
+msgstr ""
+
+#: ckanext/metadata_assistant/page_fetch.py:105
+#, python-brace-format
+msgid "The landing page answered with an error ({code})."
+msgstr ""
+
+#: ckanext/metadata_assistant/page_fetch.py:109
+msgid "The landing page is not a web page or a text."
+msgstr ""
+
+#: ckanext/metadata_assistant/page_fetch.py:124
+msgid "The landing page forwards too many times."
+msgstr ""
+
+#: ckanext/metadata_assistant/page_fetch.py:229
+msgid "The landing page has no text to read."
+msgstr ""
+
+#: ckanext/metadata_assistant/profiles.py:43
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:12
+msgid "Title"
+msgstr ""
+
+#: ckanext/metadata_assistant/profiles.py:44
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:13
+msgid "Description"
+msgstr ""
+
+#: ckanext/metadata_assistant/profiles.py:45
+msgid "Tags"
+msgstr ""
+
+#: ckanext/metadata_assistant/profiles.py:46
+msgid "License"
+msgstr ""
+
+#: ckanext/metadata_assistant/profiles.py:47
+msgid "Source"
+msgstr ""
+
+#: ckanext/metadata_assistant/profiles.py:48
+msgid "Maintainer"
+msgstr ""
+
+#: ckanext/metadata_assistant/profiles.py:49
+msgid "Maintainer email"
+msgstr ""
+
+#: ckanext/metadata_assistant/profiles.py:186
+#, python-format
+msgid "Unknown profile '%s'. Use one of: %s."
+msgstr ""
+
+#: ckanext/metadata_assistant/profiles.py:194
+msgid ""
+"Config option not set. Point it at the ckanext-scheming schema YAML file "
+"this portal uses, or leave the profile on 'auto'."
+msgstr ""
+
+#: ckanext/metadata_assistant/profiles.py:200
+msgid ""
+"ckanext-scheming has no dataset schema loaded. Use the profile "
+"'ckan_core' or point schema_file at a schema."
+msgstr ""
+
+#: ckanext/metadata_assistant/proposals.py:173
+#: ckanext/metadata_assistant/proposals.py:203
+msgid "This proposal is no longer open."
+msgstr ""
+
+#: ckanext/metadata_assistant/proposals.py:179
+#: ckanext/metadata_assistant/proposals.py:207
+msgid "You may not edit this dataset."
+msgstr ""
+
+#: ckanext/metadata_assistant/proposals.py:184
+msgid ""
+"The text of the dataset has changed since this was proposed. Ask for a "
+"new proposal."
+msgstr ""
+
+#: ckanext/metadata_assistant/proposals.py:191
+#, python-brace-format
+msgid "The dataset could not be saved: {message}"
+msgstr ""
+
+#: ckanext/metadata_assistant/views.py:30
+#: ckanext/metadata_assistant/views.py:180
+msgid "Dataset not found."
+msgstr ""
+
+#: ckanext/metadata_assistant/views.py:32
+#: ckanext/metadata_assistant/views.py:57
+#: ckanext/metadata_assistant/views.py:100
+#: ckanext/metadata_assistant/views.py:131
+#: ckanext/metadata_assistant/views.py:158
+#: ckanext/metadata_assistant/views.py:225
+msgid "Not authorized."
+msgstr ""
+
+#: ckanext/metadata_assistant/views.py:107
+msgid "The settings from the server's configuration apply again."
+msgstr ""
+
+#: ckanext/metadata_assistant/views.py:116
+msgid "The settings are saved and apply now."
+msgstr ""
+
+#: ckanext/metadata_assistant/views.py:166
+msgid "The default instructions apply again."
+msgstr ""
+
+#: ckanext/metadata_assistant/views.py:191
+msgid "The instructions are saved and apply now."
+msgstr ""
+
+#: ckanext/metadata_assistant/views.py:291
+#, python-brace-format
+msgid "{count} translation applied."
+msgid_plural "{count} translations applied."
+msgstr[0] ""
+msgstr[1] ""
+
+#: ckanext/metadata_assistant/views.py:294
+#, python-brace-format
+msgid "{count} proposal rejected."
+msgid_plural "{count} proposals rejected."
+msgstr[0] ""
+msgstr[1] ""
+
+#: ckanext/metadata_assistant/views.py:297
+msgid "Choose at least one proposal."
+msgstr ""
+
+#: ckanext/metadata_assistant/llm/assistant.py:103
+msgid ""
+"The AI service was busy or unavailable just now; it is not the settings. "
+"Try again in a while."
+msgstr ""
+
+#: ckanext/metadata_assistant/llm/assistant.py:106
+msgid ""
+"The AI service did not answer in time. A faster model, or a longer time "
+"limit on the AI settings page, can help."
+msgstr ""
+
+#: ckanext/metadata_assistant/llm/assistant.py:109
+msgid ""
+"The AI service refused more calls for now (too many calls, or the "
+"account's quota is used up). Try again later."
+msgstr ""
+
+#: ckanext/metadata_assistant/llm/assistant.py:149
+msgid "The AI provider could not complete the review."
+msgstr ""
+
+#: ckanext/metadata_assistant/llm/assistant.py:153
+#: ckanext/metadata_assistant/llm/assistant.py:155
+msgid "The AI provider returned an invalid review response."
+msgstr ""
+
+#: ckanext/metadata_assistant/llm/assistant.py:179
+msgid "The AI provider could not translate the texts."
+msgstr ""
+
+#: ckanext/metadata_assistant/llm/assistant.py:182
+msgid "The AI provider returned an invalid translation."
+msgstr ""
+
+#: ckanext/metadata_assistant/llm/assistant.py:202
+#: ckanext/metadata_assistant/llm/assistant.py:222
+#: ckanext/metadata_assistant/llm/assistant.py:239
+msgid "The AI provider returned an invalid page summary."
+msgstr ""
+
+#: ckanext/metadata_assistant/llm/assistant.py:206
+msgid ""
+"The AI service could not read the page just now (it may be busy). Try "
+"again in a while."
+msgstr ""
+
+#: ckanext/metadata_assistant/llm/assistant.py:208
+#: ckanext/metadata_assistant/llm/assistant.py:247
+msgid "The landing page could not be read."
+msgstr ""
+
+#: ckanext/metadata_assistant/llm/assistant.py:228
+msgid ""
+"The portal fetched the page, but the AI service could not summarise it "
+"just now (it may be busy). Try again in a while."
+msgstr ""
+
+#: ckanext/metadata_assistant/llm/assistant.py:230
+msgid "The portal fetched the page, but the AI service could not summarise it."
+msgstr ""
+
+#: ckanext/metadata_assistant/rules/data_services.py:145
+msgid ""
+"The data service has no contact point. A high-value dataset with an API "
+"must have one, so that users of the API know whom to ask. Add a contact "
+"point to the dataset, or an e-mail address to the data service."
+msgstr ""
+
+#: ckanext/metadata_assistant/rules/data_services.py:149
+msgid "You can choose a contact point from the actor registry."
+msgstr ""
+
+#: ckanext/metadata_assistant/rules/data_services.py:151
+msgid ""
+"The actor registry extension (ckanext-actor-registry, "
+"https://github.com/bjornhagstrom/ckanext-actor-registry) is a good way to"
+" keep contact points in one place."
+msgstr ""
+
+#: ckanext/metadata_assistant/rules/data_services.py:173
+#, python-brace-format
+msgid ""
+"A high-value dataset must be published under CC0 or CC BY 4.0. The "
+"licence '{licence}' does not meet the HVD rules."
+msgstr ""
+
+#: ckanext/metadata_assistant/rules/data_services.py:191
+#, python-brace-format
+msgid ""
+"The distribution '{name}' looks like an API but is not described as a "
+"data service. Add a data service to the distribution so that it is "
+"described as a data service."
+msgstr ""
+
+#: ckanext/metadata_assistant/rules/data_services.py:199
+#, python-brace-format
+msgid ""
+"The distribution '{name}' has a data service, but its address looks like "
+"a file download. A file is not a data service: remove the data service if"
+" that is the case."
+msgstr ""
+
+#: ckanext/metadata_assistant/rules/engine.py:106
+#, python-brace-format
+msgid "'{field}' is required but has no value."
+msgstr ""
+
+#: ckanext/metadata_assistant/rules/engine.py:126
+#, python-brace-format
+msgid "'{field}' is recommended but has no value."
+msgstr ""
+
+#: ckanext/metadata_assistant/rules/engine.py:151
+#, python-brace-format
+msgid ""
+"'{value}' is not a valid value for '{field}'. Choose one of the "
+"predefined themes instead of entering your own value."
+msgstr ""
+
+#: ckanext/metadata_assistant/rules/engine.py:189
+#, python-brace-format
+msgid "The same keyword appears more than once: {keywords}."
+msgstr ""
+
+#: ckanext/metadata_assistant/rules/engine.py:202
+msgid ""
+"The keyword looks like a whole phrase rather than several separate search"
+" terms. Separate them with commas, e.g. 'population, forecast, district'."
+msgstr ""
+
+#: ckanext/metadata_assistant/rules/engine.py:234
+#, python-brace-format
+msgid ""
+"'{description}' only repeats '{title}' word for word. Describe the "
+"contents, purpose, scope and known limitations instead."
+msgstr ""
+
+#: ckanext/metadata_assistant/rules/engine.py:250
+#, python-brace-format
+msgid ""
+"'{field}' is very short ({count} words). Describe what the dataset "
+"contains, why it exists and how it can be used."
+msgstr ""
+
+#: ckanext/metadata_assistant/rules/engine.py:263
+#, python-brace-format
+msgid ""
+"'{field}' is short ({count} words). A longer description helps readers "
+"who do not know the data: what it contains, how it was produced, how it "
+"can be used and what to be careful about."
+msgstr ""
+
+#: ckanext/metadata_assistant/rules/engine.py:308
+#, python-brace-format
+msgid ""
+"The description seems to contain a licence link, but '{field}' is empty. "
+"Enter the licence in the licence field instead."
+msgstr ""
+
+#: ckanext/metadata_assistant/rules/engine.py:327
+#, python-brace-format
+msgid ""
+"'{field}' has no value. Without a licence nobody knows how the data may "
+"be used."
+msgstr ""
+
+#: ckanext/metadata_assistant/rules/engine.py:346
+#, python-brace-format
+msgid ""
+"'{field}' has only one keyword. A few more make the dataset easier to "
+"find."
+msgstr ""
+
+#: ckanext/metadata_assistant/rules/engine.py:350
+#, python-brace-format
+msgid "'{field}' has {count} keywords. Keep the ones that describe the data best."
+msgstr ""
+
+#: ckanext/metadata_assistant/rules/engine.py:369
+#, python-brace-format
+msgid ""
+"'{field}' looks like a file name or is written in capitals. Write a title"
+" a reader would understand."
+msgstr ""
+
+#: ckanext/metadata_assistant/rules/engine.py:376
+#, python-brace-format
+msgid ""
+"'{field}' contains HTML tags. They are shown as text; write plain text "
+"instead."
+msgstr ""
+
+#: ckanext/metadata_assistant/rules/engine.py:388
+msgid "The dataset has no resources. Add a file or a link to the data."
+msgstr ""
+
+#: ckanext/metadata_assistant/rules/links.py:55
+#, python-brace-format
+msgid ""
+"The address '{address}' has a space in it. Addresses cannot contain "
+"spaces: remove it."
+msgstr ""
+
+#: ckanext/metadata_assistant/rules/links.py:59
+#, python-brace-format
+msgid ""
+"The address '{address}' does not start with http:// or https://. Without "
+"it the link does not work."
+msgstr ""
+
+#: ckanext/metadata_assistant/rules/links.py:62
+#, python-brace-format
+msgid ""
+"The address '{address}' starts with http://. If the site supports https, "
+"use that instead."
+msgstr ""
+
+#: ckanext/metadata_assistant/rules/links.py:81
+#, python-brace-format
+msgid "(In the distribution '{name}'.)"
+msgstr ""
+
+#: ckanext/metadata_assistant/rules/translations.py:145
+#, python-brace-format
+msgid "'{field}' has no version in {language}. It is required."
+msgstr ""
+
+#: ckanext/metadata_assistant/rules/translations.py:147
+#, python-brace-format
+msgid "'{field}' has no version in {language}. It is recommended."
+msgstr ""
+
+#: ckanext/metadata_assistant/rules/translations.py:155
+#, python-brace-format
+msgid ""
+"'{field}' has changed since the version in {language} was last updated. "
+"Check that the translation is still correct."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/admin/base.html:5
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:9
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/check_settings.html:18
+msgid "Metadata check"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/admin/base.html:6
+#: ckanext/metadata_assistant/templates/metadata_assistant/translations.html:8
+#: ckanext/metadata_assistant/templates/metadata_assistant/translations.html:9
+#: ckanext/metadata_assistant/templates/metadata_assistant/translations.html:11
+msgid "Translation proposals"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/help.html:3
+#: ckanext/metadata_assistant/templates/metadata_assistant/help.html:4
+#: ckanext/metadata_assistant/templates/metadata_assistant/help.html:7
+msgid "How the metadata assistant works"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/help.html:8
+msgid ""
+"The assistant helps you write better metadata. It suggests; you decide. "
+"Nothing is saved or published automatically."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/help.html:10
+msgid "Two kinds of help"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/help.html:12
+msgid "The completeness check"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/help.html:13
+msgid ""
+"It runs by itself when you open the page and after you have changed a "
+"field, uses no AI and costs nothing. It points out what is missing or "
+"looks wrong: an empty recommended field, a very short description, a "
+"missing licence, a single keyword. \"To fix\" are gaps; \"tips\" are "
+"things that could be better."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/help.html:14
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:42
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:100
+msgid "AI suggestions"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/help.html:15
+msgid ""
+"You press \"Get AI suggestions\". The AI reads your title, description, "
+"keywords and theme, and the landing page if you have given an address, "
+"and suggests better versions. It asks questions about what it cannot "
+"know. It takes a few seconds."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/help.html:18
+msgid "What happens when you ask for AI suggestions"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/help.html:20
+msgid ""
+"If the dataset has a landing page address, the page is downloaded first. "
+"The AI uses it as a source of facts for the description. A copy is kept "
+"for some hours so that the page is not fetched again for every "
+"suggestion, and the panel says how old the copy is. If you know that the "
+"page has changed, press \"Download the landing page again\"."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/help.html:21
+msgid ""
+"The AI analyses the texts. When many people use the assistant at the same"
+" time, your request may wait in line; the panel shows your place."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/help.html:22
+msgid ""
+"The suggestions appear, each next to the current value, with the changes "
+"marked in the text. You can edit a suggestion before you use it."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/help.html:23
+msgid ""
+"You press \"Use suggestion\" for the ones you want. They are put into the"
+" form, not saved. Save the dataset as usual."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/help.html:26
+msgid "What is sent to the AI service"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/help.html:27
+msgid ""
+"Only the title, description, keywords and theme, the landing page address"
+" and what was read from that page, the name of your organisation and of "
+"the catalogue, the catalogue's guidelines and what the completeness check"
+" found. Never data files, resources or personal data. The administrator "
+"chooses which AI service is used."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/help.html:29
+msgid "Prepared suggestions"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/help.html:30
+msgid ""
+"An administrator can have suggestions prepared in advance for many "
+"datasets. When you open such a dataset they are shown at once, marked "
+"with the time (\"Suggestions prepared 10:45\"), without any waiting. They"
+" are valid until the texts change. Press \"Get AI suggestions\" for new "
+"ones."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/help.html:32
+msgid "Good to know"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/help.html:34
+msgid ""
+"The AI can be wrong. Read every suggestion; you are responsible for the "
+"metadata."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/help.html:35
+msgid ""
+"It never decides about confidentiality, personal data, licence or whether"
+" data may be published."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/help.html:36
+msgid ""
+"It does not remove facts from your description, and a suggestion "
+"identical to your text is not shown."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/help.html:37
+msgid "The name of a place the data is about can be a good keyword."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/help.html:38
+msgid ""
+"If something fails, the message says what to do. If it does not help, "
+"tell an administrator."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/translations.html:12
+msgid ""
+"These are machine translations that nobody has read yet. Compare each one"
+" with the source text, correct it if needed, and then apply it. Nothing "
+"changes in a dataset until you apply a proposal. You only see the "
+"datasets you may edit."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/translations.html:14
+msgid "There are no proposals to review."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/translations.html:23
+msgid "Proposed"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/translations.html:23
+msgid "Machine-translated: check before applying"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/translations.html:36
+msgid "Keywords, separated by commas. They are added to the ones already there."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/translations.html:42
+msgid "Apply"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/translations.html:43
+msgid "Reject"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/translations.html:46
+msgid "I have read this and it can be applied"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/translations.html:52
+msgid "Apply the ticked proposals"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/_nav.html:2
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/overview.html:4
+msgid "Catalogue overview"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/_nav.html:3
+msgid "Check settings"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/_nav.html:4
+msgid "Instructions to the AI"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/_nav.html:6
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:12
+msgid "AI settings"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:4
+msgid "Review of title, description, keywords and theme"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:5
+msgid "Translation"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:12
+msgid ""
+"The AI is not set up yet, so these instructions are not used. Set it up "
+"under"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:15
+msgid ""
+"This is the whole instruction to the AI, for a review and for a "
+"translation. The text here is only our default: change any of it to fit "
+"this catalogue. The answer format is asked for separately in every "
+"request, and each request also carries the material to judge: the "
+"dataset, the help text of each field, the name of the catalogue and its "
+"organisation, and whether Markdown may be used. Mention them here to say "
+"how to use them."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:16
+msgid ""
+"The built-in part is in English, which the AI follows best. Your own text"
+" can be in any language. The AI always answers in the metadata language."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:25
+msgid ""
+"Sent with every review as well: the help text of each field, from the "
+"form. Edit a help text, and the AI follows the new one."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:27
+msgid ""
+"Sent with every translation as well, per language, from the metadata "
+"schema:"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:31
+msgid "no instructions"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:31
+#, python-format
+msgid "a glossary of %(count)s term"
+msgid_plural "a glossary of %(count)s terms"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:37
+msgid "The instruction to the AI"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:38
+msgid "empty: the AI gets no instruction"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:38
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/check_settings.html:10
+msgid "saved here"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:38
+msgid "the default text is used"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:42
+msgid ""
+"Emptying the field sends the AI no instruction at all. “Use the default "
+"texts” brings our default back."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:44
+msgid "Show the default text"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:49
+msgid "Try on a dataset"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:50
+msgid ""
+"Runs the AI with the texts in the form, without saving them. Nothing in "
+"the dataset changes."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:53
+msgid "Dataset"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:54
+msgid "Type part of a dataset's title or name"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:59
+msgid "Try the review"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:60
+msgid "Try the translation"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:66
+msgid "Trial with the text in the form (nothing is saved)"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:74
+msgid "Questions for the editor"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:82
+msgid "Nothing to translate in this dataset."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:90
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/check_settings.html:93
+msgid "Save"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:97
+msgid "Use the default texts"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/check_settings.html:11
+msgid "Server default:"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/check_settings.html:20
+msgid ""
+"What the check of a dataset's metadata does. The rule check works without"
+" any AI. Changes apply at once, for the whole portal, without a restart. "
+"Where nothing is saved here, the server default applies."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/check_settings.html:25
+msgid "Setup"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/check_settings.html:27
+msgid "Something needs to be done before everything works:"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/check_settings.html:28
+msgid "Everything needed is in place."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/check_settings.html:33
+msgid "OK"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/check_settings.html:34
+msgid "Note"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/check_settings.html:35
+msgid "To do"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/check_settings.html:38
+msgid "What to do:"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/check_settings.html:48
+msgid "Markdown in descriptions"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/check_settings.html:50
+msgid "Follow the schema"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/check_settings.html:50
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/check_settings.html:61
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/check_settings.html:84
+msgid "On"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/check_settings.html:50
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/check_settings.html:61
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/check_settings.html:84
+msgid "Off"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/check_settings.html:54
+msgid ""
+"On: the AI may write descriptions with Markdown and the suggestions can "
+"be previewed. Off: plain text only. Follow the schema: on when the "
+"description box is a Markdown box. Markdown is shown on the web but "
+"exported as typed, so keep it off if the page and the export must match."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/check_settings.html:59
+msgid "Check the addresses while the editor types"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/check_settings.html:65
+msgid ""
+"On: when the editor leaves an address field with a new address, the panel"
+" asks the link check whether it answers, and says if it forwards or does "
+"not work. It needs the link check extension. The address is requested "
+"from the server, as in the nightly check."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/check_settings.html:66
+msgid "The link check extension is not switched on here, so this has no effect."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/check_settings.html:71
+msgid "Reading the landing page"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/check_settings.html:73
+msgid "The portal first, then the AI service"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/check_settings.html:73
+msgid "The portal only"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/check_settings.html:73
+msgid "The AI service only"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/check_settings.html:77
+msgid ""
+"How the page behind a dataset's landing page address is fetched for the "
+"review. The AI reads it in every case: it turns the page into a short "
+"summary of what the dataset contains, covers and how it is updated, which"
+" the review then uses. What differs is who fetches the page. The portal "
+"fetches it itself, as an ordinary web browser would: about a second, and "
+"it works with every model, but not for a page that is built in the "
+"browser with JavaScript, for a document such as a PDF file, or for a site"
+" that keeps the portal out. The AI service (Gemini, Claude) fetches it "
+"from its side: slower, up to half a minute when the site does not let it "
+"in, but it can read documents and sometimes a page the portal cannot. "
+"Automatic: the portal first, and the AI service if the portal cannot read"
+" the page, but not for a page that does not exist. The portal only: the "
+"same for every model. The AI service only: nothing else is tried."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/check_settings.html:82
+msgid "Read the landing page when the form opens"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/check_settings.html:88
+msgid ""
+"On: when an editor opens a dataset that has a landing page address, the "
+"page is read in the background, so that the suggestions come sooner when "
+"the editor asks for them. The reading is one call to the AI for every "
+"page that has not been read in the last hours, also when the editor never"
+" asks for suggestions. Off: the page is read when the editor asks for "
+"suggestions, or changes the address."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/check_settings.html:100
+msgid "Use the server defaults"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/check_settings.html:101
+msgid "Nothing is saved here: the server's settings apply."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/overview.html:6
+msgid ""
+"What the rule check finds across all datasets. The rules work without any"
+" AI and change nothing. Click a row to see which datasets it concerns."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/overview.html:9
+msgid "There are no datasets yet."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/overview.html:11
+#, python-brace-format
+msgid "The rule check has nothing to say about any of the {count} datasets."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/overview.html:13
+#, python-brace-format
+msgid "{count} datasets were checked."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/overview.html:16
+msgid "Finding"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/overview.html:16
+msgid "Field"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/overview.html:16
+msgid "Datasets"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/overview.html:16
+msgid "Share"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/overview.html:27
+#, python-brace-format
+msgid "Showing {shown} of {all}."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:8
+msgid "Error"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:9
+msgid "Needs review"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:10
+msgid "Information"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:11
+msgid "The rule-based review found no problems."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:14
+msgid "Keywords"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:15
+msgid "Theme"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:16
+msgid ""
+"The landing page could not be read this time, so the review is based only"
+" on what is in the form. Run the review again if you want the page to be "
+"taken into account."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:17
+msgid "Suggested translations"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:18
+msgid ""
+"Machine-translated – review each suggestion before you use it. Nothing is"
+" saved until you save the dataset."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:19
+#, python-brace-format
+msgid "{language} (original)"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:20
+#, python-brace-format
+msgid "Suggestion ({language})"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:21
+#, python-brace-format
+msgid "{field} ({language})"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:22
+msgid "The translation has been added to the form. Check it before you save."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:23
+msgid "The field for the translation could not be found in the form."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:24
+#, python-brace-format
+msgid "No suggestions in {language}: {error}"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:25
+msgid "AI is translating title, description and keywords…"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:26
+msgid "The translation could not be completed."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:27
+msgid "The translation could not be completed. Try again."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:28
+msgid "The translation suggestions are ready."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:29
+msgid "There was nothing to translate."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:30
+msgid "Use suggestion"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:31
+msgid "You have AI suggestions that are not used. What should happen to them?"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:32
+msgid "Use the suggestions and save"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:33
+msgid "Discard the suggestions and save"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:34
+msgid "Back to the form"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:35
+msgid "Current value"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:36
+msgid "(empty)"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:37
+msgid "Suggestion – you can edit it before you use it"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:38
+msgid ""
+"Suggestion, added to the current keywords – you can edit it before you "
+"use it"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:39
+msgid "Themes are chosen in the list in the form."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:40
+msgid ""
+"You have edited a suggestion, so the suggestions were not refreshed. Use "
+"it, or run the review again when you are done."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:41
+msgid ""
+"The AI found nothing to change in this dataset. Run the review again for "
+"a second opinion."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:43
+msgid "Translations"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:44
+msgid "Move to top"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:45
+msgid "Get new suggestions"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:46
+msgid "Edit"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:47
+msgid "Preview"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:48
+#, python-brace-format
+msgid "{added} words added, {removed} removed"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:49
+#, python-brace-format
+msgid "Changes from the current text ({count})"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:50
+msgid "Show removed text"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:51
+msgid "Keep the original"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:52
+msgid "Use the whole suggestion again"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:53
+msgid "No changes from the current text."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:54
+msgid "Preparing the preview…"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:55
+msgid "The preview could not be made."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:56
+#, python-brace-format
+msgid "New suggestions from {time} replaced the ones from {old}."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:57
+msgid "You have edited a suggestion. Replace the suggestions anyway?"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:58
+msgid "Format the text"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:59
+msgid "Bold"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:60
+msgid "Italic"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:61
+msgid "Heading"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:62
+msgid "Bulleted list"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:63
+msgid "Numbered list"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:64
+msgid "Quote"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:65
+msgid "Link"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:66
+msgid "The suggestion is empty. Write a value, or leave the field as it is."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:67
+msgid "Suggestion used"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:68
+msgid "Added to the form, but not saved yet. Save the dataset to keep the change."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:69
+#, python-brace-format
+msgid ""
+"The suggestion for {field} has been added to the form. Check the content "
+"before you save."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:70
+msgid ""
+"The field could not be found in the form. The suggestion has not been "
+"used."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:71
+#, python-brace-format
+msgid "{count} AI suggestions to review"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:72
+msgid "Questions to consider"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:73
+msgid "Checking completeness…"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:74
+msgid "Completeness: nothing to remark on."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:75
+#, python-brace-format
+msgid "Completeness: {summary}"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:76
+#, python-brace-format
+msgid "{count} to fix"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:77
+#, python-brace-format
+msgid "{count} tips"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:78
+msgid "The completeness check could not be run."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:79
+msgid ""
+"The completeness check could not be run. Try again or contact an "
+"administrator."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:80
+#, python-brace-format
+msgid "This address forwards to {address}."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:81
+#, python-brace-format
+msgid "This address also works over https: {address}"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:82
+msgid ""
+"The quality check of the European data portal only counts links that "
+"answer directly, so the address it forwards to is the safer choice."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:83
+msgid ""
+"Plain http is not secure, and the link may stop working when the site "
+"only allows https. https also avoids a forward, which the quality check "
+"of the European data portal does not count."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:84
+msgid "What changes:"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:85
+msgid "http becomes https"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:86
+msgid "a slash is added at the end"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:87
+msgid "the slash at the end is removed"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:88
+msgid "www is added"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:89
+msgid "www is removed"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:90
+msgid "the address leads to another place, so check that it is the right page"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:91
+msgid "Use this address"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:92
+msgid "The address in the form has been changed. Check it before you save."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:93
+msgid "Reading the landing page… the review starts when it is done."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:94
+msgid "AI is reading the landing page…"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:95
+msgid "AI is reviewing the metadata…"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:96
+msgid "AI is generating suggestions…"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:97
+msgid "AI is reviewing title, description, keywords and theme…"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:98
+msgid "The AI review could not be completed."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:99
+#, python-brace-format
+msgid "The AI review could not be completed: {error}"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:101
+msgid ""
+"The AI review is complete. Read and assess the suggestions before you "
+"change anything."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:102
+#, python-brace-format
+msgid "Landing page downloaded {age}."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:103
+msgid "Downloading the landing page…"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:104
+msgid ""
+"The landing page is only read over https, and this address starts with "
+"http://. Change it to the https address to let the AI read the page."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:105
+msgid "Use the https address and read the page"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:106
+msgid ""
+"The landing page could not be downloaded. The AI uses only the texts in "
+"the form."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:107
+#, python-brace-format
+msgid ""
+"The landing page was not used: {reason} The AI uses only the texts in the"
+" form."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:108
+msgid ""
+"The landing page could not be read. The AI uses only the texts in the "
+"form."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:109
+msgid "Try again"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:110
+msgid "No landing page address: the AI uses only the texts in the form."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:111
+msgid "AI is analysing…"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:112
+msgid "AI suggestions are ready."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:113
+msgid "The AI analysis did not succeed."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:114
+msgid ""
+"Read the suggestions and use the ones you want. Nothing is saved until "
+"you save the dataset."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:115
+msgid "There is no landing page address in the form."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:116
+msgid "Waiting for a free place…"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:117
+#, python-brace-format
+msgid "Waiting in line: {count} before you…"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:118
+msgid "The AI did not answer in time. Try again."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:119
+msgid "The connection was lost. Try again."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:120
+#, python-brace-format
+msgid "Suggestions prepared {time}. Press the button for new ones."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:129
+msgid "Review metadata"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:131
+msgid ""
+"Ask AI for clearer title, description, keywords and theme, or for "
+"translations. Only these fields are sent to the AI service. No suggestion"
+" is saved or used automatically – you review and approve each one."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:134
+msgid "How it works"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:136
+msgid "The completeness check runs by itself and uses no AI."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:137
+msgid ""
+"AI suggestions: you press the button. If the dataset has a landing page "
+"address, the page is downloaded first and read as a source of facts."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:138
+msgid ""
+"Each suggestion is shown next to the current value. You edit it, then use"
+" it; it goes into the form and is saved only when you save the dataset."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:140
+msgid "Read more about how the assistant works"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:144
+msgid "Get AI suggestions"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:147
+msgid ""
+"Downloads the landing page anew, for when it has changed, and uses the "
+"new version for new AI suggestions."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:148
+msgid "Download the landing page again"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:152
+#, python-brace-format
+msgid ""
+"Translates title, description and keywords into {languages}. The "
+"suggestions are reviewed before they are used."
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:154
+#, python-brace-format
+msgid "Suggest {language}"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:154
+msgid "Suggest translations"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:169
+msgid "Rule check"
+msgstr ""
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:170
+msgid ""
+"The catalogue's rules, checked without AI against the form as it is now: "
+"what is missing or needs looking at. It updates when you change a field "
+"or use a suggestion."
+msgstr ""
+
