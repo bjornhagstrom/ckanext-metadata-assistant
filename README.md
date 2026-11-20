@@ -384,7 +384,7 @@ them.
 
 ### Landing pages
 
-![The panel says when the landing page was read; its facts inform the suggestions](docs/images/landing-page.jpg)
+![The panel's status: the landing page has been downloaded, and the AI's suggestions are ready](docs/images/landing-page.jpg)
 
 **Make the landing page a recommended field.** The page is what the AI has most to go on: with it, the suggestions can
 say what the data contains, covers and how often it is updated; without it, the AI has only the texts in the form and
@@ -525,7 +525,7 @@ All commands are `ckan -c $CKAN_INI metadata-assistant <command>`:
 
 ## Translation proposals
 
-![Translation proposals: the English texts beside their Swedish and French translations, which an editor may correct, confirms having read, and applies](docs/images/translation-proposals.jpg)
+![Translation proposals: the English texts beside their Swedish translations, which an editor may correct, confirms having read, and applies](docs/images/translation-proposals.jpg)
 
 For a multilingual schema, the editor form can suggest translations of title, description and keywords into the
 schema's target languages (one AI request per language, so one that fails does not stop the others). For existing
