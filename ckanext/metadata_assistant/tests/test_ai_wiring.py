@@ -20,3 +20,44 @@ def test_a_review_goes_through_the_shared_client_as_this_consumer_with_one_attem
     assert result["summary"] == "OK"
     assert [(c.consumer, c.kind, c.name) for c in ai_connector_fake.calls] == [("metadata_assistant", "structured", "metadata_review")]
     assert [client.max_attempts for client in ai_connector_fake.clients] == [1]   # the attempts are counted by the assistant
+
+
+def test_each_kind_of_work_asks_for_its_own_purpose_and_the_caches_follow_its_model(ai_connector_fake):
+    """API 2: the review, the translation and the landing page each ask for their purpose, so a sysadmin can give each a
+    model of its own; a review or page read by another model is another cache entry."""
+    from ckanext.ai_connector import purposes
+
+    from ckanext.metadata_assistant import ai, cache
+
+    assert set(purposes.declared()["metadata_assistant"]) == {"review", "translate", "landing_page"}
+    ai_connector_fake.answers = [json.dumps({"summary": "OK", "suggestions": []})]
+    actions.execute_review({"request": MetadataReviewRequest(title="Badplatser",
+                                                             description="Kommunens badplatser.").model_dump(mode="json")})
+    assert ai_connector_fake.purposes == ["review"]
+
+    ai_connector_fake.models = {"review": "anthropic/review-model", "landing_page": "gemini/page-model"}
+    assert ai.model(ai.REVIEW) == "anthropic/review-model" and ai.model(ai.TRANSLATE) == "gemini/fake-model"
+    before = cache.review_digest({"title": "x"}, ai.model(ai.REVIEW))
+    assert before != cache.review_digest({"title": "x"}, ai.model(ai.TRANSLATE))
+    page_key = cache._landing_key("https://example.org/d", "sv")
+    ai_connector_fake.models = {"landing_page": "anthropic/another-page-model"}
+    assert cache._landing_key("https://example.org/d", "sv") != page_key
+
+
+@pytest.mark.ckan_config("ckanext.ai_connector.model", "gemini/main-model")
+def test_a_purpose_with_a_model_of_its_own_is_ready_while_the_main_connection_is_not(monkeypatch):
+    """The connection says whether a purpose can be used; the assistant does not refuse it for the main one's sake."""
+    from ckanext.ai_connector import api, purposes, settings
+
+    from ckanext.metadata_assistant import ai
+
+    monkeypatch.delenv("GEMINI_API_KEY", raising=False)
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "an-anthropic-key-for-the-test")
+    try:
+        purposes.save("metadata_assistant", "translate", "anthropic/claude-haiku-4-5", "ANTHROPIC_API_KEY")
+        assert ai.problem() and ai.problem(ai.REVIEW)        # the main connection has no key
+        assert ai.problem(ai.TRANSLATE) is None              # the translation's own model and key are there
+        assert api.is_ready(consumer="metadata_assistant", purpose="translate")
+    finally:
+        purposes.forget("metadata_assistant", "translate")
+        settings.forget_rows()

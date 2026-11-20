@@ -5,7 +5,10 @@ When something is missing the AI features are off and the settings pages say why
 CKAN starts. Only ``ckanext.ai_connector.api`` is used here.
 """
 
-MIN_API = 1
+MIN_API = 2
+# What the assistant uses the AI for (API 2): the AI settings page can give each its own model; without one, the main model.
+REVIEW, TRANSLATE, LANDING_PAGE = "review", "translate", "landing_page"
+KIND_PURPOSES = {"review": REVIEW, "translate": TRANSLATE, "landing": LANDING_PAGE}
 
 try:
     from ckanext.ai_connector import api
@@ -13,36 +16,58 @@ except ImportError:   # installed without its dependency (pip --no-deps)
     api = None
 
 
-def problem():
-    """Why the AI cannot be used here, as a sentence for a sysadmin, or None when it can."""
+def declare_purposes():
+    """Name the assistant's purposes for the AI settings page (called when the plugin loads)."""
+    from ckanext.metadata_assistant.llm.assistant import CONSUMER
+    from ckanext.metadata_assistant.localization import _
+
+    if api is None or getattr(api, "API_VERSION", 1) < 2:
+        return
+    api.declare_purposes(CONSUMER, {REVIEW: lambda: _("Metadata review"), TRANSLATE: lambda: _("Translation of metadata"),
+                                    LANDING_PAGE: lambda: _("Reading landing pages")})
+
+
+def problem(purpose=None):
+    """Why the AI cannot be used here (for that purpose), as a sentence for a sysadmin, or None when it can."""
+    from ckanext.metadata_assistant.llm.assistant import CONSUMER
     from ckanext.metadata_assistant.localization import _
 
     if api is None:
         return _("The AI features need ckanext-ai-connector, which is not installed.")
-    return api.unavailable_reason(min_api=MIN_API)
+    if purpose is None or getattr(api, "API_VERSION", 1) < 2:
+        return api.unavailable_reason(min_api=MIN_API)   # (an API older than 2 says so, without the new arguments)
+    # A purpose with a model of its own can work while the main connection cannot: the connection says.
+    return api.unavailable_reason(min_api=MIN_API, consumer=CONSUMER, purpose=purpose)
 
 
-def ready():
-    """Can the AI be used here?"""
-    return problem() is None
+def ready(purpose=None):
+    """Can the AI be used here (for that purpose)?"""
+    return problem(purpose) is None
 
 
-def model():
-    """The model in use, or "" (for the cache of prepared reviews: a review by another model is another review)."""
+def model(purpose=None):
+    """The model in use for a purpose, or "" (for the caches: a review or a page read by another model is another one)."""
+    from ckanext.metadata_assistant.llm.assistant import CONSUMER
+
     if api is None:
         return ""
     try:
-        return api.describe()["model"]
+        return api.describe(CONSUMER, purpose)["model"] if purpose else api.describe()["model"]
     except Exception:
         return ""
 
 
-def assistant(**options):
-    """The assistant's AI over a new client. Raises ProviderConfigurationError with the reason when it cannot be used."""
+def assistant(purpose=None, **options):
+    """The assistant's AI over a new client for a purpose. Raises ProviderConfigurationError with the reason when it cannot
+    be used."""
     from ckanext.metadata_assistant.llm.assistant import CONSUMER, MetadataAI
     from ckanext.metadata_assistant.llm.base import ProviderConfigurationError
 
-    reason = problem()
+    reason = problem(purpose)
     if reason:
         raise ProviderConfigurationError(reason)
-    return MetadataAI(api.client(CONSUMER, max_attempts=1), **options)
+    try:
+        client = api.client(CONSUMER, purpose=purpose, max_attempts=1)
+    except api.AIConfigurationError as error:
+        raise ProviderConfigurationError(str(error)) from None
+    return MetadataAI(client, **options)

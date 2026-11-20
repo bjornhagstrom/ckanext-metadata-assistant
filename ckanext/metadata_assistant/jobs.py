@@ -205,7 +205,7 @@ def prepare(context, data_dict):
         spec = actions.prepare_review(context, data_dict)
         from ckanext.metadata_assistant import ai
 
-        spec["model"] = ai.model()
+        spec["model"] = ai.model(ai.REVIEW)
         spec["digest"] = cache.review_digest(spec["request"], spec["model"], spec["package_id"])
     else:
         spec = actions.prepare_translation(context, data_dict)
@@ -226,7 +226,8 @@ def metadata_assistant_job_start(context, data_dict):
     from ckanext.metadata_assistant import ai
 
     user = (context.get("user") or "") if context else ""
-    reason = ai.problem()   # the shared AI connection (ckanext-ai-connector) cannot be used: say so, queue nothing
+    kind = data_dict.get("kind")
+    reason = ai.problem(ai.KIND_PURPOSES.get(kind) if isinstance(kind, str) else None)   # the AI cannot be used for it: say so, queue nothing
     quiet = bool(data_dict.get("cache_only") or data_dict.get("ahead"))
     if reason and quiet:
         return {"state": "none"}   # asked by the panel on its own (a prepared answer, a read nobody asked for): fail quietly

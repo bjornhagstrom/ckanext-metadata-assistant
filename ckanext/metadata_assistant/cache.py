@@ -27,8 +27,14 @@ LANDING_HOURS = 6
 
 # -- landing page ----------------------------------------------------------------------------------------------
 
-def _landing_key(url, language):
-    return limits.KEY + "landing:" + hashlib.sha256(("%s|%s" % (language, url)).encode("utf-8")).hexdigest()
+def _landing_key(url, language, model=None):
+    """The cache key of a page read: the address, the language and the model that reads pages (another model reads another
+    summary, API 2 lets the landing page have a model of its own)."""
+    if model is None:
+        from ckanext.metadata_assistant import ai
+
+        model = ai.model(ai.LANDING_PAGE)
+    return limits.KEY + "landing:" + hashlib.sha256(("%s|%s|%s" % (language, url, model)).encode("utf-8")).hexdigest()
 
 
 def landing_get(url, language, redis=None):

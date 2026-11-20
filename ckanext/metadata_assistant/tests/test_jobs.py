@@ -71,9 +71,9 @@ class FakeProvider:
 def provider(monkeypatch):
     fake = FakeProvider()
 
-    monkeypatch.setattr("ckanext.metadata_assistant.ai.assistant", lambda **k: fake)
-    monkeypatch.setattr("ckanext.metadata_assistant.ai.model", lambda: "fake/model")
-    monkeypatch.setattr("ckanext.metadata_assistant.ai.problem", lambda: None)
+    monkeypatch.setattr("ckanext.metadata_assistant.ai.assistant", lambda *a, **k: fake)
+    monkeypatch.setattr("ckanext.metadata_assistant.ai.model", lambda *a: "fake/model")
+    monkeypatch.setattr("ckanext.metadata_assistant.ai.problem", lambda *a: None)
     monkeypatch.setattr(jobs, "workers_listening", lambda queue_name=jobs.QUEUE: 0)
     return fake
 
@@ -150,6 +150,19 @@ def test_unknown_kind_is_refused(provider):
     user, dataset = _editor_and_dataset()
     with pytest.raises(toolkit.ValidationError):
         jobs.metadata_assistant_job_start(_context(user), {"kind": "nonsense"})
+    with pytest.raises(toolkit.ValidationError):   # not a string: refused the same way, not a 500
+        jobs.metadata_assistant_job_start(_context(user), {"kind": ["review"]})
+
+
+def test_each_kind_asks_whether_the_ai_can_be_used_for_its_purpose(provider, monkeypatch):
+    asked = []
+    monkeypatch.setattr("ckanext.metadata_assistant.ai.problem", lambda *a: asked.append(a) or "Not for this.")
+    user, dataset = _editor_and_dataset()
+    for kind in ("review", "translate", "landing"):
+        with pytest.raises(toolkit.ValidationError):
+            jobs.metadata_assistant_job_start(_context(user), {"kind": kind, "id": dataset["id"],
+                                                               "url": "https://example.org/d"})
+    assert asked == [("review",), ("translate",), ("landing_page",)]
 
 
 @pytest.mark.ckan_config("ckanext.metadata_assistant.jobs", "on")

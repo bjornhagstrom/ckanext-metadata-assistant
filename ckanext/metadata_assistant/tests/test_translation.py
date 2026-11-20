@@ -127,6 +127,7 @@ class TranslateActionTests(unittest.TestCase):
 
         result = actions.metadata_assistant_translate_dataset({}, {"dataset": {}})
 
+        self.assertEqual(from_config.call_args.args, ("translate",))   # its own purpose (API 2)
         request = provider.translate.call_args.args[0]
         self.assertEqual(request.model_dump(), {
             "source_language": "sv", "target_language": "en", "title": "Badplatser",

@@ -36,14 +36,15 @@ from ckanext.metadata_assistant.llm import (
 log = logging.getLogger(__name__)
 
 
-def _provider():
-    """The assistant's AI over the shared connection. A connection that cannot be used (no model, no key, or
+def _provider(purpose=None):
+    """The assistant's AI over the shared connection, for one of its purposes (``ai.REVIEW``, ``ai.TRANSLATE``,
+    ``ai.LANDING_PAGE``). A connection that cannot be used (no model, no key, or
     ckanext-ai-connector's plugin missing) is a ValidationError with the reason, as for a failed call, never an uncaught
     error."""
     from ckanext.metadata_assistant import ai
 
     try:
-        return ai.assistant()
+        return ai.assistant(purpose)
     except ProviderError as error:
         log.warning("Metadata assistant provider unavailable: %s", error)
         raise toolkit.ValidationError({"ai": [str(error)]}) from error
@@ -267,7 +268,9 @@ def execute_landing_page(spec):
     """Read the page named by a spec from :func:`prepare_landing_page` (the slow part; no access checks)."""
     from ckanext.metadata_assistant import admin_settings, page_fetch
 
-    provider = _provider()
+    from ckanext.metadata_assistant import ai
+
+    provider = _provider(ai.LANDING_PAGE)
     reader = getattr(provider, "read_landing_page", None)
     text_reader = getattr(provider, "read_landing_page_text", None)
     mode = admin_settings.landing_page_fetch_mode()   # auto (the portal's fetch, then the service's), own, or provider
@@ -358,7 +361,9 @@ def execute_review(spec):
     """Run the AI review for a spec from :func:`prepare_review` (the slow part; no access checks)."""
     profile = get_active_profile()
     request = MetadataReviewRequest.model_validate(spec["request"])
-    provider = _provider()
+    from ckanext.metadata_assistant import ai
+
+    provider = _provider(ai.REVIEW)
     try:
         result = provider.review(request)
     except ProviderError as error:
@@ -553,7 +558,9 @@ def execute_translation(spec):
     targets = dict(profile.translation_targets)
     source_name = language_name(profile.source_language)
     sources = spec["sources"]
-    provider = _provider()
+    from ckanext.metadata_assistant import ai
+
+    provider = _provider(ai.TRANSLATE)
     translate = getattr(provider, "translate", None)
     if translate is None:
         raise toolkit.ValidationError(

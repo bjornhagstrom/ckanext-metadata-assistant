@@ -5,7 +5,7 @@ publishes in. It checks a dataset against a set of rules and, if you connect an 
 descriptions, keywords and themes, and translates them into the portal's other languages. It never saves or publishes
 anything by itself.
 
-> **Status: pre-alpha (`0.1.0`, the first release).** It is developed against CKAN 2.12, and its test suite runs on
+> **Status: pre-alpha (`0.2.0`).** It is developed against CKAN 2.12, and its test suite runs on
 > CKAN 2.11.1, the newest 2.11 and 2.12. It has not had a formal security audit, and the database schema may still change
 > between 0.x releases. The AI connection has been run against Gemini and Claude models; other services reached
 > through LiteLLM, and an AI server of your own, have not been tested against real services (see
@@ -61,7 +61,7 @@ Every text the AI suggests must be read and applied by a person. This is how the
 - **Redis**, which CKAN already requires: used for the background job queue, the limits across workers and the
   landing page cache. Without a reachable Redis the extension still works, runs AI requests inside the web request,
   and applies no limits.
-- Installed with the extension: `pydantic>=2,<3` and [ckanext-ai-connector](https://github.com/bjornhagstrom/ckanext-ai-connector) (`>=0.1,<0.2` while
+- Installed with the extension: `pydantic>=2,<3` and [ckanext-ai-connector](https://github.com/bjornhagstrom/ckanext-ai-connector) (`>=0.2,<0.3` while
   its API may still change), which holds the AI connection (model, key, time limits, the call itself) that extensions
   share, and brings LiteLLM and `cryptography`. CKAN itself provides the other libraries the code imports (Flask, Click,
   Babel, PyYAML, requests, Redis and RQ). LiteLLM brings many dependencies of its own, so install into a test
@@ -324,6 +324,13 @@ Set a model and an API key in ckanext-ai-connector, either in the server's confi
 `ckanext.ai_connector.api_key_env`) or on its *AI settings* page (`/ckan-admin/ai`, sysadmins only; the old address
 `/ckan-admin/metadata-assistant` leads there). The page also has *Test the connection*, which makes one short call with
 the values in the form, without saving them.
+
+The assistant does three kinds of work, and each can have a model of its own: *Metadata review*, *Translation of
+metadata* and *Reading landing pages* (the purposes `review`, `translate` and `landing_page`). They are set under *Models
+for different purposes* on the same page; a purpose without a model of its own uses the main model. A cheaper model for
+translation and a stronger one for the review is a typical choice. Prepared reviews and page readings are kept per model,
+so changing a model does not reuse what another model made.
+
 The model field suggests text models from LiteLLM's own catalogue (shipped with the package) for the services whose
 key is set; the field stays free text, because the catalogue lags behind new models.
 
@@ -331,7 +338,7 @@ The model's prefix decides what the model can do with a landing page:
 
 | Model prefix | Page handling |
 |---|---|
-| `gemini/` | The portal's own fetch, or the model reads the page itself; without a stored reading, a review may also hand the model the page. |
+| `gemini/` | The portal's own fetch, or the model reads the page itself; without a stored reading, a review may also hand the model the page (the review's model then reads it, also when *Reading landing pages* has a model of its own). |
 | `anthropic/` | The portal's own fetch, or the model reads the page itself (in a call of its own, never inside a review). |
 | anything else | The portal's own fetch only. |
 

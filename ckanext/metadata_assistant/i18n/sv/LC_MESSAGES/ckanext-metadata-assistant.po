@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-11-19 01:16+0100\n"
+"POT-Creation-Date: 2026-11-20 12:08+0100\n"
 "PO-Revision-Date: 2026-10-01 14:23+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: sv\n"
@@ -18,35 +18,35 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.18.0\n"
 
-#: ckanext/metadata_assistant/actions.py:95
+#: ckanext/metadata_assistant/actions.py:96
 msgid "Invalid page summary."
 msgstr "Ogiltigt sidreferat."
 
 #: ckanext/metadata_assistant/actions.py:251
-#: ckanext/metadata_assistant/page_fetch.py:85
+#: ckanext/metadata_assistant/page_fetch.py:94
 msgid "The landing page must be a public https address."
 msgstr "Landningssidan måste vara en publik https-adress."
 
-#: ckanext/metadata_assistant/actions.py:279
-#: ckanext/metadata_assistant/actions.py:283
-#: ckanext/metadata_assistant/llm/assistant.py:177
+#: ckanext/metadata_assistant/actions.py:281
+#: ckanext/metadata_assistant/actions.py:285
+#: ckanext/metadata_assistant/llm/assistant.py:195
 msgid "The chosen AI provider cannot read landing pages."
 msgstr "Den valda AI-providern kan inte läsa landningssidor."
 
-#: ckanext/metadata_assistant/actions.py:517
+#: ckanext/metadata_assistant/actions.py:521
 msgid "The profile has no fields for translation."
 msgstr "Profilen har inga fält för översättning."
 
-#: ckanext/metadata_assistant/actions.py:522
+#: ckanext/metadata_assistant/actions.py:526
 msgid "None of the requested languages is a target language."
 msgstr "Inget av de begärda språken är ett målspråk."
 
-#: ckanext/metadata_assistant/actions.py:530
+#: ckanext/metadata_assistant/actions.py:534
 #, python-brace-format
 msgid "There is no text in {language} to translate yet."
 msgstr "Det finns ingen text på {language} att översätta ännu."
 
-#: ckanext/metadata_assistant/actions.py:561
+#: ckanext/metadata_assistant/actions.py:567
 msgid "The chosen AI provider cannot translate."
 msgstr "Den valda AI-providern kan inte översätta."
 
@@ -68,7 +68,19 @@ msgstr "Välj automatiskt, portalen eller AI-tjänsten."
 msgid "Keep the instructions under {count} characters."
 msgstr "Håll instruktionerna under {count} tecken."
 
-#: ckanext/metadata_assistant/ai.py:21
+#: ckanext/metadata_assistant/ai.py:26
+msgid "Metadata review"
+msgstr "Granskning av metadata"
+
+#: ckanext/metadata_assistant/ai.py:26
+msgid "Translation of metadata"
+msgstr "Översättning av metadata"
+
+#: ckanext/metadata_assistant/ai.py:27
+msgid "Reading landing pages"
+msgstr "Läsning av landningssidor"
+
+#: ckanext/metadata_assistant/ai.py:36
 msgid "The AI features need ckanext-ai-connector, which is not installed."
 msgstr "AI-funktionerna behöver ckanext-ai-connector, som inte är installerat."
 
@@ -99,68 +111,125 @@ msgstr ""
 "Inställningar för AI-anslutningen ligger kvar under tilläggets gamla namn"
 " ({names}) och används inte längre."
 
-#: ckanext/metadata_assistant/checks.py:51
-#: ckanext/metadata_assistant/checks.py:53
+#: ckanext/metadata_assistant/checks.py:52
+#: ckanext/metadata_assistant/checks.py:54
 msgid "AI"
 msgstr "AI"
 
-#: ckanext/metadata_assistant/checks.py:51
+#: ckanext/metadata_assistant/checks.py:52
 msgid "Only the rule-based review works."
 msgstr "Bara den regelbaserade granskningen fungerar."
 
-#: ckanext/metadata_assistant/checks.py:53
+#: ckanext/metadata_assistant/checks.py:54
 #, python-brace-format
 msgid "The shared AI connection is ready ({model})."
 msgstr "Den delade AI-anslutningen är klar ({model})."
 
-#: ckanext/metadata_assistant/checks.py:64
-#: ckanext/metadata_assistant/checks.py:66
-#: ckanext/metadata_assistant/checks.py:72
+#: ckanext/metadata_assistant/checks.py:76
+#: ckanext/metadata_assistant/checks.py:78
+#: ckanext/metadata_assistant/checks.py:84
 msgid "Metadata schema"
 msgstr "Metadataschema"
 
-#: ckanext/metadata_assistant/checks.py:68
+#: ckanext/metadata_assistant/checks.py:80
 #, python-format
 msgid "the schema file %s"
 msgstr "schemafilen %s"
 
-#: ckanext/metadata_assistant/checks.py:69
+#: ckanext/metadata_assistant/checks.py:81
 msgid "the schema loaded by ckanext-scheming"
 msgstr "schemat som ckanext-scheming har laddat"
 
-#: ckanext/metadata_assistant/checks.py:70
+#: ckanext/metadata_assistant/checks.py:82
 msgid "CKAN's own fields (no schema)"
 msgstr "CKAN:s egna fält (inget schema)"
 
-#: ckanext/metadata_assistant/checks.py:81
-#: ckanext/metadata_assistant/checks.py:85
+#: ckanext/metadata_assistant/checks.py:108
+msgid "Landing page"
+msgstr "Landningssida"
+
+#: ckanext/metadata_assistant/checks.py:111
+msgid ""
+"The schema has no landing page field (url), so the AI has only the texts "
+"in the form to go on."
+msgstr ""
+"Schemat har inget fält för landningssida (url), så AI:n har bara texterna"
+" i formuläret att gå på."
+
+#: ckanext/metadata_assistant/checks.py:112
+msgid "Add the field url (dcat:landingPage) to the dataset schema."
+msgstr "Lägg till fältet url (dcat:landingPage) i datamängdsschemat."
+
+#: ckanext/metadata_assistant/checks.py:114
+msgid ""
+"Make the landing page recommended: url: recommended in the file named by "
+"ckanext.field_levels.file."
+msgstr ""
+"Gör landningssidan rekommenderad: url: recommended i filen som "
+"ckanext.field_levels.file pekar på."
+
+#: ckanext/metadata_assistant/checks.py:117
+msgid ""
+"The landing page field is hidden in the form, so editors cannot give the "
+"AI the page to read."
+msgstr ""
+"Fältet för landningssida är dolt i formuläret, så redaktörerna kan inte "
+"ge AI:n sidan att läsa."
+
+#: ckanext/metadata_assistant/checks.py:120
+msgid ""
+"The landing page field is optional, so the form folds it away and editors"
+" may not fill it in. The AI suggestions are much better with the page."
+msgstr ""
+"Fältet för landningssida är valfritt, så formuläret fäller in det och "
+"redaktörerna fyller kanske inte i det. AI-förslagen blir mycket bättre "
+"med sidan."
+
+#: ckanext/metadata_assistant/checks.py:124
+msgid ""
+"The rule check does not ask for a landing page, though the AI suggestions"
+" are much better with the page."
+msgstr ""
+"Regelkontrollen ber inte om någon landningssida, fast AI-förslagen blir "
+"mycket bättre med sidan."
+
+#: ckanext/metadata_assistant/checks.py:126
+msgid "Mark the field url with field_level: recommended in the dataset schema."
+msgstr "Märk fältet url med field_level: recommended i datamängdsschemat."
+
+#: ckanext/metadata_assistant/checks.py:128
+msgid "The form asks for a landing page, which the AI reads for its suggestions."
+msgstr "Formuläret ber om en landningssida, som AI:n läser för sina förslag."
+
+#: ckanext/metadata_assistant/checks.py:135
+#: ckanext/metadata_assistant/checks.py:139
 msgid "Languages"
 msgstr "Språk"
 
-#: ckanext/metadata_assistant/checks.py:82
+#: ckanext/metadata_assistant/checks.py:136
 msgid "The schema has no multilingual fields, so translation suggestions are off."
 msgstr "Schemat har inga flerspråkiga fält, så översättningsförslag är avstängda."
 
-#: ckanext/metadata_assistant/checks.py:83
+#: ckanext/metadata_assistant/checks.py:137
 msgid "Add multilingual fields (ckanext-fluent) to the schema to use them."
 msgstr ""
 "Lägg till flerspråkiga fält (ckanext-fluent) i schemat för att använda "
 "dem."
 
-#: ckanext/metadata_assistant/checks.py:94
-#: ckanext/metadata_assistant/checks.py:97
+#: ckanext/metadata_assistant/checks.py:148
+#: ckanext/metadata_assistant/checks.py:151
 msgid "Guidelines for the AI"
 msgstr "Riktlinjer för AI:n"
 
-#: ckanext/metadata_assistant/checks.py:95
+#: ckanext/metadata_assistant/checks.py:149
 msgid "The AI has no guidelines for any field, so it judges by its own taste."
 msgstr "AI:n har inga riktlinjer för något fält, så den bedömer efter eget omdöme."
 
-#: ckanext/metadata_assistant/checks.py:96
+#: ckanext/metadata_assistant/checks.py:150
 msgid "Add help texts to the schema's fields."
 msgstr "Lägg hjälptexter på schemats fält."
 
-#: ckanext/metadata_assistant/checks.py:98
+#: ckanext/metadata_assistant/checks.py:152
 #, python-format
 msgid ""
 "%d fields have guidelines (the schema's help texts, else the built-in "
@@ -169,68 +238,68 @@ msgstr ""
 "%d fält har riktlinjer (schemats hjälptexter, annars den inbyggda "
 "grundplåten)."
 
-#: ckanext/metadata_assistant/checks.py:104
+#: ckanext/metadata_assistant/checks.py:158
 msgid "Background work"
 msgstr "Bakgrundsarbete"
 
-#: ckanext/metadata_assistant/checks.py:110
+#: ckanext/metadata_assistant/checks.py:164
 msgid "Redis is not reachable, so AI requests run in the page."
 msgstr "Redis går inte att nå, så AI-förfrågningar körs i sidan."
 
-#: ckanext/metadata_assistant/checks.py:111
+#: ckanext/metadata_assistant/checks.py:165
 msgid "Check CKAN's Redis settings."
 msgstr "Kontrollera CKAN:s Redis-inställningar."
 
-#: ckanext/metadata_assistant/checks.py:119
+#: ckanext/metadata_assistant/checks.py:173
 msgid "Off: AI requests run in the page."
 msgstr "Av: AI-förfrågningar körs i sidan."
 
-#: ckanext/metadata_assistant/checks.py:121
+#: ckanext/metadata_assistant/checks.py:175
 #, python-format
 msgid "%d worker(s) listening, %d request(s) waiting, %d prepared review(s)."
 msgstr ""
 "%d arbetare lyssnar, %d förfrågan(ingar) väntar, %d förberedda "
 "granskningar."
 
-#: ckanext/metadata_assistant/checks.py:124
+#: ckanext/metadata_assistant/checks.py:178
 msgid "the AI service limited us"
 msgstr "AI-tjänsten begränsade oss"
 
-#: ckanext/metadata_assistant/checks.py:124
+#: ckanext/metadata_assistant/checks.py:178
 msgid "the AI service stopped answering"
 msgstr "AI-tjänsten slutade svara"
 
-#: ckanext/metadata_assistant/checks.py:125
+#: ckanext/metadata_assistant/checks.py:179
 msgid "requests waited too long for a free place"
 msgstr "förfrågningar väntade för länge på en ledig plats"
 
-#: ckanext/metadata_assistant/checks.py:125
+#: ckanext/metadata_assistant/checks.py:179
 msgid "a person reached their limit"
 msgstr "en person nådde sin gräns"
 
-#: ckanext/metadata_assistant/checks.py:127
+#: ckanext/metadata_assistant/checks.py:181
 #, python-format
 msgid "Limits reached today (%s)."
 msgstr "Gränser som nåtts i dag (%s)."
 
-#: ckanext/metadata_assistant/checks.py:128
+#: ckanext/metadata_assistant/checks.py:182
 msgid "If this is common, use a stronger AI model or plan, or raise the limits."
 msgstr ""
 "Om det är vanligt: använd en starkare AI-modell eller ett bättre "
 "abonnemang, eller höj gränserna."
 
-#: ckanext/metadata_assistant/checks.py:131
+#: ckanext/metadata_assistant/checks.py:185
 #, python-format
 msgid "The AI service has failed repeatedly; requests wait %d seconds."
 msgstr ""
 "AI-tjänsten har misslyckats flera gånger; förfrågningar väntar %d "
 "sekunder."
 
-#: ckanext/metadata_assistant/checks.py:134
+#: ckanext/metadata_assistant/checks.py:188
 msgid "Requests are queued but no worker is listening."
 msgstr "Förfrågningar köas men ingen arbetare lyssnar."
 
-#: ckanext/metadata_assistant/checks.py:136
+#: ckanext/metadata_assistant/checks.py:190
 msgid ""
 "No worker: AI requests run in the page, which is fine for a few editors. "
 "When several work at once (a training session, a large organisation) a "
@@ -346,7 +415,7 @@ msgstr "Värde saknas"
 msgid "Text in the default language is missing."
 msgstr "Text på standardspråket saknas."
 
-#: ckanext/metadata_assistant/page_fetch.py:87
+#: ckanext/metadata_assistant/page_fetch.py:96
 msgid ""
 "The landing page is not on a public address (an internal or private "
 "network, or a name that does not exist). Such pages are not read."
@@ -354,31 +423,31 @@ msgstr ""
 "Landningssidan ligger inte på en publik adress (ett internt eller privat "
 "nät, eller ett namn som inte finns). Sådana sidor läses inte."
 
-#: ckanext/metadata_assistant/page_fetch.py:91
-#: ckanext/metadata_assistant/page_fetch.py:118
+#: ckanext/metadata_assistant/page_fetch.py:100
+#: ckanext/metadata_assistant/page_fetch.py:127
 msgid "The landing page took too long to answer."
 msgstr "Landningssidan svarade inte i tid."
 
-#: ckanext/metadata_assistant/page_fetch.py:96
-#: ckanext/metadata_assistant/page_fetch.py:101
-#: ckanext/metadata_assistant/page_fetch.py:121
+#: ckanext/metadata_assistant/page_fetch.py:105
+#: ckanext/metadata_assistant/page_fetch.py:110
+#: ckanext/metadata_assistant/page_fetch.py:130
 msgid "The landing page could not be reached."
 msgstr "Landningssidan gick inte att nå."
 
-#: ckanext/metadata_assistant/page_fetch.py:105
+#: ckanext/metadata_assistant/page_fetch.py:114
 #, python-brace-format
 msgid "The landing page answered with an error ({code})."
 msgstr "Landningssidan svarade med ett fel ({code})."
 
-#: ckanext/metadata_assistant/page_fetch.py:109
+#: ckanext/metadata_assistant/page_fetch.py:118
 msgid "The landing page is not a web page or a text."
 msgstr "Landningssidan är inte en webbsida eller en text."
 
-#: ckanext/metadata_assistant/page_fetch.py:124
+#: ckanext/metadata_assistant/page_fetch.py:133
 msgid "The landing page forwards too many times."
 msgstr "Landningssidan skickar vidare för många gånger."
 
-#: ckanext/metadata_assistant/page_fetch.py:229
+#: ckanext/metadata_assistant/page_fetch.py:238
 msgid "The landing page has no text to read."
 msgstr "Landningssidan har ingen text att läsa."
 
@@ -457,83 +526,126 @@ msgid "The dataset could not be saved: {message}"
 msgstr "Datamängden kunde inte sparas: {message}"
 
 #: ckanext/metadata_assistant/views.py:30
-#: ckanext/metadata_assistant/views.py:170
+#: ckanext/metadata_assistant/views.py:180
 msgid "Dataset not found."
 msgstr "Datamängden hittades inte."
 
 #: ckanext/metadata_assistant/views.py:32
 #: ckanext/metadata_assistant/views.py:57
-#: ckanext/metadata_assistant/views.py:90
-#: ckanext/metadata_assistant/views.py:121
-#: ckanext/metadata_assistant/views.py:148
-#: ckanext/metadata_assistant/views.py:215
+#: ckanext/metadata_assistant/views.py:100
+#: ckanext/metadata_assistant/views.py:131
+#: ckanext/metadata_assistant/views.py:158
+#: ckanext/metadata_assistant/views.py:225
 msgid "Not authorized."
 msgstr "Saknar behörighet."
 
-#: ckanext/metadata_assistant/views.py:97
+#: ckanext/metadata_assistant/views.py:107
 msgid "The settings from the server's configuration apply again."
 msgstr "Inställningarna från serverns konfiguration gäller igen."
 
-#: ckanext/metadata_assistant/views.py:106
+#: ckanext/metadata_assistant/views.py:116
 msgid "The settings are saved and apply now."
 msgstr "Inställningarna är sparade och gäller nu."
 
-#: ckanext/metadata_assistant/views.py:156
+#: ckanext/metadata_assistant/views.py:166
 msgid "The default instructions apply again."
 msgstr "Standardinstruktionerna gäller igen."
 
-#: ckanext/metadata_assistant/views.py:181
+#: ckanext/metadata_assistant/views.py:191
 msgid "The instructions are saved and apply now."
 msgstr "Instruktionerna är sparade och gäller nu."
 
-#: ckanext/metadata_assistant/views.py:276
+#: ckanext/metadata_assistant/views.py:291
 #, python-brace-format
 msgid "{count} translation applied."
 msgid_plural "{count} translations applied."
 msgstr[0] "{count} översättning tillämpad."
 msgstr[1] "{count} översättningar tillämpade."
 
-#: ckanext/metadata_assistant/views.py:279
+#: ckanext/metadata_assistant/views.py:294
 #, python-brace-format
 msgid "{count} proposal rejected."
 msgid_plural "{count} proposals rejected."
 msgstr[0] "{count} förslag avvisat."
 msgstr[1] "{count} förslag avvisade."
 
-#: ckanext/metadata_assistant/views.py:282
+#: ckanext/metadata_assistant/views.py:297
 msgid "Choose at least one proposal."
 msgstr "Välj minst ett förslag."
 
-#: ckanext/metadata_assistant/llm/assistant.py:132
+#: ckanext/metadata_assistant/llm/assistant.py:103
+msgid ""
+"The AI service was busy or unavailable just now; it is not the settings. "
+"Try again in a while."
+msgstr ""
+"AI-tjänsten var upptagen eller otillgänglig just nu; det beror inte på "
+"inställningarna. Försök igen om en stund."
+
+#: ckanext/metadata_assistant/llm/assistant.py:106
+msgid ""
+"The AI service did not answer in time. A faster model, or a longer time "
+"limit on the AI settings page, can help."
+msgstr ""
+"AI-tjänsten svarade inte i tid. En snabbare modell, eller en längre "
+"tidsgräns på sidan AI-inställningar, kan hjälpa."
+
+#: ckanext/metadata_assistant/llm/assistant.py:109
+msgid ""
+"The AI service refused more calls for now (too many calls, or the "
+"account's quota is used up). Try again later."
+msgstr ""
+"AI-tjänsten tar inte emot fler anrop just nu (för många anrop, eller så "
+"är kontots kvot slut). Försök igen senare."
+
+#: ckanext/metadata_assistant/llm/assistant.py:149
 msgid "The AI provider could not complete the review."
 msgstr "AI-leverantören kunde inte slutföra granskningen."
 
-#: ckanext/metadata_assistant/llm/assistant.py:136
-#: ckanext/metadata_assistant/llm/assistant.py:138
+#: ckanext/metadata_assistant/llm/assistant.py:153
+#: ckanext/metadata_assistant/llm/assistant.py:156
 msgid "The AI provider returned an invalid review response."
 msgstr "AI-leverantören returnerade ett ogiltigt granskningssvar."
 
-#: ckanext/metadata_assistant/llm/assistant.py:162
+#: ckanext/metadata_assistant/llm/assistant.py:180
 msgid "The AI provider could not translate the texts."
 msgstr "AI-leverantören kunde inte översätta texterna."
 
-#: ckanext/metadata_assistant/llm/assistant.py:165
+#: ckanext/metadata_assistant/llm/assistant.py:183
 msgid "The AI provider returned an invalid translation."
 msgstr "AI-leverantören returnerade en ogiltig översättning."
 
-#: ckanext/metadata_assistant/llm/assistant.py:185
-#: ckanext/metadata_assistant/llm/assistant.py:202
-#: ckanext/metadata_assistant/llm/assistant.py:214
+#: ckanext/metadata_assistant/llm/assistant.py:203
+#: ckanext/metadata_assistant/llm/assistant.py:223
+#: ckanext/metadata_assistant/llm/assistant.py:240
 msgid "The AI provider returned an invalid page summary."
 msgstr "AI-leverantören returnerade ett ogiltigt sidreferat."
 
-#: ckanext/metadata_assistant/llm/assistant.py:188
-#: ckanext/metadata_assistant/llm/assistant.py:205
-#: ckanext/metadata_assistant/llm/assistant.py:222
+#: ckanext/metadata_assistant/llm/assistant.py:207
+msgid ""
+"The AI service could not read the page just now (it may be busy). Try "
+"again in a while."
+msgstr ""
+"AI-tjänsten kunde inte läsa sidan just nu (den kan vara upptagen). Försök"
+" igen om en stund."
+
+#: ckanext/metadata_assistant/llm/assistant.py:209
+#: ckanext/metadata_assistant/llm/assistant.py:248
 msgid "The landing page could not be read."
 msgstr "Landningssidan kunde inte läsas."
 
-#: ckanext/metadata_assistant/rules/data_services.py:145
+#: ckanext/metadata_assistant/llm/assistant.py:229
+msgid ""
+"The portal fetched the page, but the AI service could not summarise it "
+"just now (it may be busy). Try again in a while."
+msgstr ""
+"Portalen hämtade sidan, men AI-tjänsten kunde inte sammanfatta den just "
+"nu (den kan vara upptagen). Försök igen om en stund."
+
+#: ckanext/metadata_assistant/llm/assistant.py:231
+msgid "The portal fetched the page, but the AI service could not summarise it."
+msgstr "Portalen hämtade sidan, men AI-tjänsten kunde inte sammanfatta den."
+
+#: ckanext/metadata_assistant/rules/data_services.py:147
 msgid ""
 "The data service has no contact point. A high-value dataset with an API "
 "must have one, so that users of the API know whom to ask. Add a contact "
@@ -544,11 +656,11 @@ msgstr ""
 "till en kontaktpunkt på datamängden, eller en e-postadress på "
 "datatjänsten."
 
-#: ckanext/metadata_assistant/rules/data_services.py:149
+#: ckanext/metadata_assistant/rules/data_services.py:151
 msgid "You can choose a contact point from the actor registry."
 msgstr "Du kan välja en kontaktpunkt i aktörsregistret."
 
-#: ckanext/metadata_assistant/rules/data_services.py:151
+#: ckanext/metadata_assistant/rules/data_services.py:153
 msgid ""
 "The actor registry extension (ckanext-actor-registry, "
 "https://github.com/bjornhagstrom/ckanext-actor-registry) is a good way to"
@@ -558,7 +670,7 @@ msgstr ""
 "https://github.com/bjornhagstrom/ckanext-actor-registry) är ett bra sätt "
 "att samla kontaktpunkter på ett ställe."
 
-#: ckanext/metadata_assistant/rules/data_services.py:173
+#: ckanext/metadata_assistant/rules/data_services.py:175
 #, python-brace-format
 msgid ""
 "A high-value dataset must be published under CC0 or CC BY 4.0. The "
@@ -567,7 +679,7 @@ msgstr ""
 "En värdefull datamängd måste publiceras under CC0 eller CC BY 4.0. "
 "Licensen '{licence}' uppfyller inte HVD-reglerna."
 
-#: ckanext/metadata_assistant/rules/data_services.py:191
+#: ckanext/metadata_assistant/rules/data_services.py:193
 #, python-brace-format
 msgid ""
 "The distribution '{name}' looks like an API but is not described as a "
@@ -578,7 +690,7 @@ msgstr ""
 "datatjänst. Lägg till en datatjänst på distributionen så beskrivs den som"
 " en datatjänst."
 
-#: ckanext/metadata_assistant/rules/data_services.py:199
+#: ckanext/metadata_assistant/rules/data_services.py:201
 #, python-brace-format
 msgid ""
 "The distribution '{name}' has a data service, but its address looks like "
@@ -589,17 +701,17 @@ msgstr ""
 "filnedladdning. En fil är ingen datatjänst: ta bort datatjänsten om det "
 "stämmer."
 
-#: ckanext/metadata_assistant/rules/engine.py:106
+#: ckanext/metadata_assistant/rules/engine.py:105
 #, python-brace-format
 msgid "'{field}' is required but has no value."
 msgstr "'{field}' är obligatoriskt men saknar värde."
 
-#: ckanext/metadata_assistant/rules/engine.py:126
+#: ckanext/metadata_assistant/rules/engine.py:125
 #, python-brace-format
 msgid "'{field}' is recommended but has no value."
 msgstr "'{field}' är rekommenderat men saknar värde."
 
-#: ckanext/metadata_assistant/rules/engine.py:151
+#: ckanext/metadata_assistant/rules/engine.py:150
 #, python-brace-format
 msgid ""
 "'{value}' is not a valid value for '{field}'. Choose one of the "
@@ -608,12 +720,12 @@ msgstr ""
 "'{value}' är inte ett giltigt värde för '{field}'. Välj bland de "
 "fördefinierade temana i stället för att skriva in ett eget värde."
 
-#: ckanext/metadata_assistant/rules/engine.py:189
+#: ckanext/metadata_assistant/rules/engine.py:188
 #, python-brace-format
 msgid "The same keyword appears more than once: {keywords}."
 msgstr "Samma nyckelord förekommer flera gånger: {keywords}."
 
-#: ckanext/metadata_assistant/rules/engine.py:202
+#: ckanext/metadata_assistant/rules/engine.py:201
 msgid ""
 "The keyword looks like a whole phrase rather than several separate search"
 " terms. Separate them with commas, e.g. 'population, forecast, district'."
@@ -621,7 +733,7 @@ msgstr ""
 "Nyckelordet ser ut att vara en hel fras i stället för flera separata "
 "sökord. Separera med kommatecken, t.ex. 'befolkning, prognos, kommundel'."
 
-#: ckanext/metadata_assistant/rules/engine.py:234
+#: ckanext/metadata_assistant/rules/engine.py:233
 #, python-brace-format
 msgid ""
 "'{description}' only repeats '{title}' word for word. Describe the "
@@ -630,7 +742,7 @@ msgstr ""
 "'{description}' upprepar bara '{title}' ordagrant. Beskriv i stället "
 "innehåll, syfte, avgränsningar och kända begränsningar."
 
-#: ckanext/metadata_assistant/rules/engine.py:250
+#: ckanext/metadata_assistant/rules/engine.py:249
 #, python-brace-format
 msgid ""
 "'{field}' is very short ({count} words). Describe what the dataset "
@@ -639,7 +751,7 @@ msgstr ""
 "'{field}' är mycket kort ({count} ord). Beskriv vad datamängden "
 "innehåller, varför den finns och hur den kan användas."
 
-#: ckanext/metadata_assistant/rules/engine.py:263
+#: ckanext/metadata_assistant/rules/engine.py:262
 #, python-brace-format
 msgid ""
 "'{field}' is short ({count} words). A longer description helps readers "
@@ -650,7 +762,7 @@ msgstr ""
 " inte känner datan: vad den innehåller, hur den har tagits fram, hur den "
 "kan användas och vad man ska vara försiktig med."
 
-#: ckanext/metadata_assistant/rules/engine.py:308
+#: ckanext/metadata_assistant/rules/engine.py:307
 #, python-brace-format
 msgid ""
 "The description seems to contain a licence link, but '{field}' is empty. "
@@ -659,14 +771,14 @@ msgstr ""
 "Beskrivningen verkar innehålla en licenslänk, men '{field}' är tomt. Ange"
 " licensen i licensfältet i stället för i beskrivningen."
 
-#: ckanext/metadata_assistant/rules/engine.py:327
+#: ckanext/metadata_assistant/rules/engine.py:326
 #, python-brace-format
 msgid ""
 "'{field}' has no value. Without a licence nobody knows how the data may "
 "be used."
 msgstr "'{field}' saknar värde. Utan licens vet ingen hur datan får användas."
 
-#: ckanext/metadata_assistant/rules/engine.py:346
+#: ckanext/metadata_assistant/rules/engine.py:345
 #, python-brace-format
 msgid ""
 "'{field}' has only one keyword. A few more make the dataset easier to "
@@ -675,12 +787,12 @@ msgstr ""
 "'{field}' har bara ett nyckelord. Några fler gör datamängden lättare att "
 "hitta."
 
-#: ckanext/metadata_assistant/rules/engine.py:350
+#: ckanext/metadata_assistant/rules/engine.py:349
 #, python-brace-format
 msgid "'{field}' has {count} keywords. Keep the ones that describe the data best."
 msgstr "'{field}' har {count} nyckelord. Behåll dem som beskriver datan bäst."
 
-#: ckanext/metadata_assistant/rules/engine.py:369
+#: ckanext/metadata_assistant/rules/engine.py:368
 #, python-brace-format
 msgid ""
 "'{field}' looks like a file name or is written in capitals. Write a title"
@@ -689,7 +801,7 @@ msgstr ""
 "'{field}' ser ut som ett filnamn eller är skrivet med versaler. Skriv en "
 "titel som en läsare förstår."
 
-#: ckanext/metadata_assistant/rules/engine.py:376
+#: ckanext/metadata_assistant/rules/engine.py:375
 #, python-brace-format
 msgid ""
 "'{field}' contains HTML tags. They are shown as text; write plain text "
@@ -698,11 +810,11 @@ msgstr ""
 "'{field}' innehåller HTML-taggar. De visas som text; skriv vanlig text i "
 "stället."
 
-#: ckanext/metadata_assistant/rules/engine.py:388
+#: ckanext/metadata_assistant/rules/engine.py:387
 msgid "The dataset has no resources. Add a file or a link to the data."
 msgstr "Datamängden har inga resurser. Lägg till en fil eller en länk till datan."
 
-#: ckanext/metadata_assistant/rules/links.py:55
+#: ckanext/metadata_assistant/rules/links.py:57
 #, python-brace-format
 msgid ""
 "The address '{address}' has a space in it. Addresses cannot contain "
@@ -711,7 +823,7 @@ msgstr ""
 "Adressen '{address}' innehåller ett mellanslag. Adresser får inte "
 "innehålla mellanslag: ta bort det."
 
-#: ckanext/metadata_assistant/rules/links.py:59
+#: ckanext/metadata_assistant/rules/links.py:61
 #, python-brace-format
 msgid ""
 "The address '{address}' does not start with http:// or https://. Without "
@@ -720,7 +832,7 @@ msgstr ""
 "Adressen '{address}' börjar inte med http:// eller https://. Utan det "
 "fungerar inte länken."
 
-#: ckanext/metadata_assistant/rules/links.py:62
+#: ckanext/metadata_assistant/rules/links.py:64
 #, python-brace-format
 msgid ""
 "The address '{address}' starts with http://. If the site supports https, "
@@ -729,22 +841,22 @@ msgstr ""
 "Adressen '{address}' börjar med http://. Om webbplatsen stöder https, "
 "använd det i stället."
 
-#: ckanext/metadata_assistant/rules/links.py:81
+#: ckanext/metadata_assistant/rules/links.py:83
 #, python-brace-format
 msgid "(In the distribution '{name}'.)"
 msgstr "(I distributionen '{name}'.)"
 
-#: ckanext/metadata_assistant/rules/translations.py:145
+#: ckanext/metadata_assistant/rules/translations.py:146
 #, python-brace-format
 msgid "'{field}' has no version in {language}. It is required."
 msgstr "'{field}' saknar version på {language}. Den är obligatorisk."
 
-#: ckanext/metadata_assistant/rules/translations.py:147
+#: ckanext/metadata_assistant/rules/translations.py:148
 #, python-brace-format
 msgid "'{field}' has no version in {language}. It is recommended."
 msgstr "'{field}' saknar version på {language}. Den rekommenderas."
 
-#: ckanext/metadata_assistant/rules/translations.py:155
+#: ckanext/metadata_assistant/rules/translations.py:156
 #, python-brace-format
 msgid ""
 "'{field}' has changed since the version in {language} was last updated. "
@@ -1041,19 +1153,7 @@ msgstr ""
 "Den inbyggda delen är på engelska, som AI:n följer bäst. Er egen text kan"
 " vara på valfritt språk. AI:n svarar alltid på metadataspråket."
 
-#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:20
-msgid "Trial with the text in the form (nothing is saved)"
-msgstr "Prov med texten i formuläret (inget sparas)"
-
-#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:28
-msgid "Questions for the editor"
-msgstr "Frågor till redaktören"
-
-#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:36
-msgid "Nothing to translate in this dataset."
-msgstr "Det finns inget att översätta i den här datamängden."
-
-#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:49
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:25
 msgid ""
 "Sent with every review as well: the help text of each field, from the "
 "form. Edit a help text, and the AI follows the new one."
@@ -1061,41 +1161,41 @@ msgstr ""
 "Med varje granskning skickas också hjälptexten för varje fält, från "
 "formuläret. Ändra en hjälptext så följer AI:n den nya."
 
-#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:51
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:27
 msgid ""
 "Sent with every translation as well, per language, from the metadata "
 "schema:"
 msgstr "Med varje översättning skickas också, per språk, från metadataschemat:"
 
-#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:55
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:31
 msgid "no instructions"
 msgstr "inga instruktioner"
 
-#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:55
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:31
 #, python-format
 msgid "a glossary of %(count)s term"
 msgid_plural "a glossary of %(count)s terms"
 msgstr[0] "en ordlista med %(count)s term"
 msgstr[1] "en ordlista med %(count)s termer"
 
-#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:61
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:37
 msgid "The instruction to the AI"
 msgstr "Instruktionen till AI:n"
 
-#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:62
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:38
 msgid "empty: the AI gets no instruction"
 msgstr "tom: AI:n får ingen instruktion"
 
-#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:62
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:38
 #: ckanext/metadata_assistant/templates/metadata_assistant/admin/check_settings.html:10
 msgid "saved here"
 msgstr "sparad här"
 
-#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:62
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:38
 msgid "the default text is used"
 msgstr "standardtexten används"
 
-#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:66
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:42
 msgid ""
 "Emptying the field sends the AI no instruction at all. “Use the default "
 "texts” brings our default back."
@@ -1103,15 +1203,15 @@ msgstr ""
 "Töms fältet får AI:n ingen instruktion alls. ”Använd standardtexterna” "
 "ger tillbaka vårt förval."
 
-#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:68
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:44
 msgid "Show the default text"
 msgstr "Visa standardtexten"
 
-#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:73
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:49
 msgid "Try on a dataset"
 msgstr "Prova på en datamängd"
 
-#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:74
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:50
 msgid ""
 "Runs the AI with the texts in the form, without saving them. Nothing in "
 "the dataset changes."
@@ -1119,24 +1219,40 @@ msgstr ""
 "Kör AI:n med texterna i formuläret, utan att spara dem. Inget i "
 "datamängden ändras."
 
-#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:77
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:53
 msgid "Dataset"
 msgstr "Datamängd"
 
-#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:83
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:54
+msgid "Type part of a dataset's title or name"
+msgstr "Skriv en del av en datamängds titel eller namn"
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:59
 msgid "Try the review"
 msgstr "Prova granskningen"
 
-#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:84
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:60
 msgid "Try the translation"
 msgstr "Prova översättningen"
 
-#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:89
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:66
+msgid "Trial with the text in the form (nothing is saved)"
+msgstr "Prov med texten i formuläret (inget sparas)"
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:74
+msgid "Questions for the editor"
+msgstr "Frågor till redaktören"
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:82
+msgid "Nothing to translate in this dataset."
+msgstr "Det finns inget att översätta i den här datamängden."
+
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:90
 #: ckanext/metadata_assistant/templates/metadata_assistant/admin/check_settings.html:93
 msgid "Save"
 msgstr "Spara"
 
-#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:96
+#: ckanext/metadata_assistant/templates/metadata_assistant/admin/ai_instructions.html:97
 msgid "Use the default texts"
 msgstr "Använd standardtexterna"
 
@@ -1808,8 +1924,8 @@ msgstr ""
 #: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:107
 #, python-brace-format
 msgid ""
-"The landing page was not used: {reason} The AI uses only the texts in the "
-"form."
+"The landing page was not used: {reason} The AI uses only the texts in the"
+" form."
 msgstr ""
 "Landningssidan användes inte: {reason} AI:n använder bara texterna i "
 "formuläret."
@@ -1954,56 +2070,17 @@ msgstr "Föreslå {language}"
 msgid "Suggest translations"
 msgstr "Föreslå översättningar"
 
-msgid "Type part of a dataset's title or name"
-msgstr "Skriv en del av en datamängds titel eller namn"
-
-msgid "The AI service could not read the page just now (it may be busy). Try again in a while."
-msgstr "AI-tjänsten kunde inte läsa sidan just nu (den kan vara upptagen). Försök igen om en stund."
-
-msgid "The portal fetched the page, but the AI service could not summarise it just now (it may be busy). Try again in a while."
-msgstr "Portalen hämtade sidan, men AI-tjänsten kunde inte sammanfatta den just nu (den kan vara upptagen). Försök igen om en stund."
-
-msgid "The portal fetched the page, but the AI service could not summarise it."
-msgstr "Portalen hämtade sidan, men AI-tjänsten kunde inte sammanfatta den."
-
-msgid "Landing page"
-msgstr "Landningssida"
-
-msgid "The schema has no landing page field (url), so the AI has only the texts in the form to go on."
-msgstr "Schemat har inget fält för landningssida (url), så AI:n har bara texterna i formuläret att gå på."
-
-msgid "Add the field url (dcat:landingPage) to the dataset schema."
-msgstr "Lägg till fältet url (dcat:landingPage) i datamängdsschemat."
-
-msgid "Make the landing page recommended: url: recommended in the file named by ckanext.field_levels.file."
-msgstr "Gör landningssidan rekommenderad: url: recommended i filen som ckanext.field_levels.file pekar på."
-
-msgid "The landing page field is hidden in the form, so editors cannot give the AI the page to read."
-msgstr "Fältet för landningssida är dolt i formuläret, så redaktörerna kan inte ge AI:n sidan att läsa."
-
-msgid "The landing page field is optional, so the form folds it away and editors may not fill it in. The AI suggestions are much better with the page."
-msgstr "Fältet för landningssida är valfritt, så formuläret fäller in det och redaktörerna fyller kanske inte i det. AI-förslagen blir mycket bättre med sidan."
-
-msgid "The rule check does not ask for a landing page, though the AI suggestions are much better with the page."
-msgstr "Regelkontrollen ber inte om någon landningssida, fast AI-förslagen blir mycket bättre med sidan."
-
-msgid "Mark the field url with field_level: recommended in the dataset schema."
-msgstr "Märk fältet url med field_level: recommended i datamängdsschemat."
-
-msgid "The form asks for a landing page, which the AI reads for its suggestions."
-msgstr "Formuläret ber om en landningssida, som AI:n läser för sina förslag."
-
-msgid "The AI service was busy or unavailable just now; it is not the settings. Try again in a while."
-msgstr "AI-tjänsten var upptagen eller otillgänglig just nu; det beror inte på inställningarna. Försök igen om en stund."
-
-msgid "The AI service did not answer in time. A faster model, or a longer time limit on the AI settings page, can help."
-msgstr "AI-tjänsten svarade inte i tid. En snabbare modell, eller en längre tidsgräns på sidan AI-inställningar, kan hjälpa."
-
-msgid "The AI service refused more calls for now (too many calls, or the account's quota is used up). Try again later."
-msgstr "AI-tjänsten tar inte emot fler anrop just nu (för många anrop, eller så är kontots kvot slut). Försök igen senare."
-
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:169
 msgid "Rule check"
 msgstr "Regelkontroll"
 
-msgid "The catalogue's rules, checked without AI against the form as it is now: what is missing or needs looking at. It updates when you change a field or use a suggestion."
-msgstr "Katalogens regler, kontrollerade utan AI mot formuläret som det ser ut nu: vad som saknas eller behöver ses över. Den uppdateras när du ändrar ett fält eller använder ett förslag."
+#: ckanext/metadata_assistant/templates/metadata_assistant/snippets/review_panel.html:170
+msgid ""
+"The catalogue's rules, checked without AI against the form as it is now: "
+"what is missing or needs looking at. It updates when you change a field "
+"or use a suggestion."
+msgstr ""
+"Katalogens regler, kontrollerade utan AI mot formuläret som det ser ut "
+"nu: vad som saknas eller behöver ses över. Den uppdateras när du ändrar "
+"ett fält eller använder ett förslag."
+

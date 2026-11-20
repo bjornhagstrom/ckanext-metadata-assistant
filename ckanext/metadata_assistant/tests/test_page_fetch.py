@@ -208,7 +208,7 @@ class _Provider:
 
 
 def _run(provider, mode, monkeypatch, fetch=lambda url, language=None: "Page text of the page"):
-    monkeypatch.setattr("ckanext.metadata_assistant.ai.assistant", lambda **k: provider)
+    monkeypatch.setattr("ckanext.metadata_assistant.ai.assistant", lambda *a, **k: provider)
     monkeypatch.setitem(toolkit.config, admin_settings.PREFIX + "landing_page_fetch", mode)
     monkeypatch.setattr(page_fetch, "fetch_text", fetch)
     return actions.execute_landing_page({"kind": "landing", "url": "https://example.org/d", "language": "en"})
@@ -218,6 +218,15 @@ def _refuse(code="the page needs a browser", may_help=True):
     def refuse(url, language=None):
         raise page_fetch.PageFetchError(code, service_may_help=may_help)
     return refuse
+
+
+def test_a_landing_page_is_read_for_its_own_purpose(monkeypatch):
+    asked = []
+    working = _Provider(service=None, text=_extract("read from the portal's own fetch"))
+    _run(working, "own", monkeypatch)
+    monkeypatch.setattr("ckanext.metadata_assistant.ai.assistant", lambda *a, **k: asked.append(a) or working)
+    actions.execute_landing_page({"kind": "landing", "url": "https://example.org/d", "language": "en"})
+    assert asked == [("landing_page",)]
 
 
 def test_the_portals_fetch_asks_for_the_page_in_the_metadata_language(monkeypatch):
@@ -333,7 +342,7 @@ def test_a_read_ahead_uses_the_portals_own_fetch_only_and_a_short_limit(monkeypa
             seen["timeout"] = timeout
             return _extract("read from the portal's own fetch")
 
-    monkeypatch.setattr("ckanext.metadata_assistant.ai.assistant", lambda **k: Provider())
+    monkeypatch.setattr("ckanext.metadata_assistant.ai.assistant", lambda *a, **k: Provider())
     monkeypatch.setitem(toolkit.config, admin_settings.PREFIX + "landing_page_fetch", "auto")
     monkeypatch.setattr(page_fetch, "fetch_text", lambda url, language=None: "Page text of the page")
     assert actions.execute_landing_page(_ahead_spec())["summary"] == "read from the portal's own fetch"

@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file. The format
 is based on Keep a Changelog, and the project follows Semantic Versioning.
 
+## [Unreleased]
+
+## [0.2.0] - 2026-11-20
+
+### Added
+
+- **A model per kind of work:** the review, the translation and the reading of landing pages are the purposes
+  `review`, `translate` and `landing_page` of ckanext-ai-connector's API 2, so each can have a model of its own on the AI
+  settings page. Prepared reviews and page reads are kept per model. Needs ckanext-ai-connector 0.2.
+
 ## [0.1.0] - 2026-11-20
 
 The first public release.

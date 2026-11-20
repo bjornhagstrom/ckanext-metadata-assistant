@@ -83,6 +83,9 @@ class MetadataAssistantPlugin(plugins.SingletonPlugin):
     def update_config(self, config):
         toolkit.add_template_directory(config, "templates")
         toolkit.add_resource("assets", "metadata_assistant")
+        from ckanext.metadata_assistant import ai
+
+        ai.declare_purposes()   # review, translation, landing pages: each may get its own model on the AI settings page
 
     def get_blueprint(self):
         return views.blueprint

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-11-19 23:12+0100\n"
+"POT-Creation-Date: 2026-11-20 12:08+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,35 +17,35 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.18.0\n"
 
-#: ckanext/metadata_assistant/actions.py:95
+#: ckanext/metadata_assistant/actions.py:96
 msgid "Invalid page summary."
 msgstr ""
 
 #: ckanext/metadata_assistant/actions.py:251
-#: ckanext/metadata_assistant/page_fetch.py:85
+#: ckanext/metadata_assistant/page_fetch.py:94
 msgid "The landing page must be a public https address."
 msgstr ""
 
-#: ckanext/metadata_assistant/actions.py:279
-#: ckanext/metadata_assistant/actions.py:283
-#: ckanext/metadata_assistant/llm/assistant.py:194
+#: ckanext/metadata_assistant/actions.py:281
+#: ckanext/metadata_assistant/actions.py:285
+#: ckanext/metadata_assistant/llm/assistant.py:195
 msgid "The chosen AI provider cannot read landing pages."
 msgstr ""
 
-#: ckanext/metadata_assistant/actions.py:517
+#: ckanext/metadata_assistant/actions.py:521
 msgid "The profile has no fields for translation."
 msgstr ""
 
-#: ckanext/metadata_assistant/actions.py:522
+#: ckanext/metadata_assistant/actions.py:526
 msgid "None of the requested languages is a target language."
 msgstr ""
 
-#: ckanext/metadata_assistant/actions.py:530
+#: ckanext/metadata_assistant/actions.py:534
 #, python-brace-format
 msgid "There is no text in {language} to translate yet."
 msgstr ""
 
-#: ckanext/metadata_assistant/actions.py:561
+#: ckanext/metadata_assistant/actions.py:567
 msgid "The chosen AI provider cannot translate."
 msgstr ""
 
@@ -67,7 +67,19 @@ msgstr ""
 msgid "Keep the instructions under {count} characters."
 msgstr ""
 
-#: ckanext/metadata_assistant/ai.py:21
+#: ckanext/metadata_assistant/ai.py:26
+msgid "Metadata review"
+msgstr ""
+
+#: ckanext/metadata_assistant/ai.py:26
+msgid "Translation of metadata"
+msgstr ""
+
+#: ckanext/metadata_assistant/ai.py:27
+msgid "Reading landing pages"
+msgstr ""
+
+#: ckanext/metadata_assistant/ai.py:36
 msgid "The AI features need ckanext-ai-connector, which is not installed."
 msgstr ""
 
@@ -360,37 +372,37 @@ msgstr ""
 msgid "Text in the default language is missing."
 msgstr ""
 
-#: ckanext/metadata_assistant/page_fetch.py:87
+#: ckanext/metadata_assistant/page_fetch.py:96
 msgid ""
 "The landing page is not on a public address (an internal or private "
 "network, or a name that does not exist). Such pages are not read."
 msgstr ""
 
-#: ckanext/metadata_assistant/page_fetch.py:91
-#: ckanext/metadata_assistant/page_fetch.py:118
+#: ckanext/metadata_assistant/page_fetch.py:100
+#: ckanext/metadata_assistant/page_fetch.py:127
 msgid "The landing page took too long to answer."
 msgstr ""
 
-#: ckanext/metadata_assistant/page_fetch.py:96
-#: ckanext/metadata_assistant/page_fetch.py:101
-#: ckanext/metadata_assistant/page_fetch.py:121
+#: ckanext/metadata_assistant/page_fetch.py:105
+#: ckanext/metadata_assistant/page_fetch.py:110
+#: ckanext/metadata_assistant/page_fetch.py:130
 msgid "The landing page could not be reached."
 msgstr ""
 
-#: ckanext/metadata_assistant/page_fetch.py:105
+#: ckanext/metadata_assistant/page_fetch.py:114
 #, python-brace-format
 msgid "The landing page answered with an error ({code})."
 msgstr ""
 
-#: ckanext/metadata_assistant/page_fetch.py:109
+#: ckanext/metadata_assistant/page_fetch.py:118
 msgid "The landing page is not a web page or a text."
 msgstr ""
 
-#: ckanext/metadata_assistant/page_fetch.py:124
+#: ckanext/metadata_assistant/page_fetch.py:133
 msgid "The landing page forwards too many times."
 msgstr ""
 
-#: ckanext/metadata_assistant/page_fetch.py:229
+#: ckanext/metadata_assistant/page_fetch.py:238
 msgid "The landing page has no text to read."
 msgstr ""
 
@@ -533,71 +545,71 @@ msgid "The AI provider could not complete the review."
 msgstr ""
 
 #: ckanext/metadata_assistant/llm/assistant.py:153
-#: ckanext/metadata_assistant/llm/assistant.py:155
+#: ckanext/metadata_assistant/llm/assistant.py:156
 msgid "The AI provider returned an invalid review response."
 msgstr ""
 
-#: ckanext/metadata_assistant/llm/assistant.py:179
+#: ckanext/metadata_assistant/llm/assistant.py:180
 msgid "The AI provider could not translate the texts."
 msgstr ""
 
-#: ckanext/metadata_assistant/llm/assistant.py:182
+#: ckanext/metadata_assistant/llm/assistant.py:183
 msgid "The AI provider returned an invalid translation."
 msgstr ""
 
-#: ckanext/metadata_assistant/llm/assistant.py:202
-#: ckanext/metadata_assistant/llm/assistant.py:222
-#: ckanext/metadata_assistant/llm/assistant.py:239
+#: ckanext/metadata_assistant/llm/assistant.py:203
+#: ckanext/metadata_assistant/llm/assistant.py:223
+#: ckanext/metadata_assistant/llm/assistant.py:240
 msgid "The AI provider returned an invalid page summary."
 msgstr ""
 
-#: ckanext/metadata_assistant/llm/assistant.py:206
+#: ckanext/metadata_assistant/llm/assistant.py:207
 msgid ""
 "The AI service could not read the page just now (it may be busy). Try "
 "again in a while."
 msgstr ""
 
-#: ckanext/metadata_assistant/llm/assistant.py:208
-#: ckanext/metadata_assistant/llm/assistant.py:247
+#: ckanext/metadata_assistant/llm/assistant.py:209
+#: ckanext/metadata_assistant/llm/assistant.py:248
 msgid "The landing page could not be read."
 msgstr ""
 
-#: ckanext/metadata_assistant/llm/assistant.py:228
+#: ckanext/metadata_assistant/llm/assistant.py:229
 msgid ""
 "The portal fetched the page, but the AI service could not summarise it "
 "just now (it may be busy). Try again in a while."
 msgstr ""
 
-#: ckanext/metadata_assistant/llm/assistant.py:230
+#: ckanext/metadata_assistant/llm/assistant.py:231
 msgid "The portal fetched the page, but the AI service could not summarise it."
 msgstr ""
 
-#: ckanext/metadata_assistant/rules/data_services.py:145
+#: ckanext/metadata_assistant/rules/data_services.py:147
 msgid ""
 "The data service has no contact point. A high-value dataset with an API "
 "must have one, so that users of the API know whom to ask. Add a contact "
 "point to the dataset, or an e-mail address to the data service."
 msgstr ""
 
-#: ckanext/metadata_assistant/rules/data_services.py:149
+#: ckanext/metadata_assistant/rules/data_services.py:151
 msgid "You can choose a contact point from the actor registry."
 msgstr ""
 
-#: ckanext/metadata_assistant/rules/data_services.py:151
+#: ckanext/metadata_assistant/rules/data_services.py:153
 msgid ""
 "The actor registry extension (ckanext-actor-registry, "
 "https://github.com/bjornhagstrom/ckanext-actor-registry) is a good way to"
 " keep contact points in one place."
 msgstr ""
 
-#: ckanext/metadata_assistant/rules/data_services.py:173
+#: ckanext/metadata_assistant/rules/data_services.py:175
 #, python-brace-format
 msgid ""
 "A high-value dataset must be published under CC0 or CC BY 4.0. The "
 "licence '{licence}' does not meet the HVD rules."
 msgstr ""
 
-#: ckanext/metadata_assistant/rules/data_services.py:191
+#: ckanext/metadata_assistant/rules/data_services.py:193
 #, python-brace-format
 msgid ""
 "The distribution '{name}' looks like an API but is not described as a "
@@ -605,7 +617,7 @@ msgid ""
 "described as a data service."
 msgstr ""
 
-#: ckanext/metadata_assistant/rules/data_services.py:199
+#: ckanext/metadata_assistant/rules/data_services.py:201
 #, python-brace-format
 msgid ""
 "The distribution '{name}' has a data service, but its address looks like "
@@ -613,49 +625,49 @@ msgid ""
 " that is the case."
 msgstr ""
 
-#: ckanext/metadata_assistant/rules/engine.py:106
+#: ckanext/metadata_assistant/rules/engine.py:105
 #, python-brace-format
 msgid "'{field}' is required but has no value."
 msgstr ""
 
-#: ckanext/metadata_assistant/rules/engine.py:126
+#: ckanext/metadata_assistant/rules/engine.py:125
 #, python-brace-format
 msgid "'{field}' is recommended but has no value."
 msgstr ""
 
-#: ckanext/metadata_assistant/rules/engine.py:151
+#: ckanext/metadata_assistant/rules/engine.py:150
 #, python-brace-format
 msgid ""
 "'{value}' is not a valid value for '{field}'. Choose one of the "
 "predefined themes instead of entering your own value."
 msgstr ""
 
-#: ckanext/metadata_assistant/rules/engine.py:189
+#: ckanext/metadata_assistant/rules/engine.py:188
 #, python-brace-format
 msgid "The same keyword appears more than once: {keywords}."
 msgstr ""
 
-#: ckanext/metadata_assistant/rules/engine.py:202
+#: ckanext/metadata_assistant/rules/engine.py:201
 msgid ""
 "The keyword looks like a whole phrase rather than several separate search"
 " terms. Separate them with commas, e.g. 'population, forecast, district'."
 msgstr ""
 
-#: ckanext/metadata_assistant/rules/engine.py:234
+#: ckanext/metadata_assistant/rules/engine.py:233
 #, python-brace-format
 msgid ""
 "'{description}' only repeats '{title}' word for word. Describe the "
 "contents, purpose, scope and known limitations instead."
 msgstr ""
 
-#: ckanext/metadata_assistant/rules/engine.py:250
+#: ckanext/metadata_assistant/rules/engine.py:249
 #, python-brace-format
 msgid ""
 "'{field}' is very short ({count} words). Describe what the dataset "
 "contains, why it exists and how it can be used."
 msgstr ""
 
-#: ckanext/metadata_assistant/rules/engine.py:263
+#: ckanext/metadata_assistant/rules/engine.py:262
 #, python-brace-format
 msgid ""
 "'{field}' is short ({count} words). A longer description helps readers "
@@ -663,87 +675,87 @@ msgid ""
 "can be used and what to be careful about."
 msgstr ""
 
-#: ckanext/metadata_assistant/rules/engine.py:308
+#: ckanext/metadata_assistant/rules/engine.py:307
 #, python-brace-format
 msgid ""
 "The description seems to contain a licence link, but '{field}' is empty. "
 "Enter the licence in the licence field instead."
 msgstr ""
 
-#: ckanext/metadata_assistant/rules/engine.py:327
+#: ckanext/metadata_assistant/rules/engine.py:326
 #, python-brace-format
 msgid ""
 "'{field}' has no value. Without a licence nobody knows how the data may "
 "be used."
 msgstr ""
 
-#: ckanext/metadata_assistant/rules/engine.py:346
+#: ckanext/metadata_assistant/rules/engine.py:345
 #, python-brace-format
 msgid ""
 "'{field}' has only one keyword. A few more make the dataset easier to "
 "find."
 msgstr ""
 
-#: ckanext/metadata_assistant/rules/engine.py:350
+#: ckanext/metadata_assistant/rules/engine.py:349
 #, python-brace-format
 msgid "'{field}' has {count} keywords. Keep the ones that describe the data best."
 msgstr ""
 
-#: ckanext/metadata_assistant/rules/engine.py:369
+#: ckanext/metadata_assistant/rules/engine.py:368
 #, python-brace-format
 msgid ""
 "'{field}' looks like a file name or is written in capitals. Write a title"
 " a reader would understand."
 msgstr ""
 
-#: ckanext/metadata_assistant/rules/engine.py:376
+#: ckanext/metadata_assistant/rules/engine.py:375
 #, python-brace-format
 msgid ""
 "'{field}' contains HTML tags. They are shown as text; write plain text "
 "instead."
 msgstr ""
 
-#: ckanext/metadata_assistant/rules/engine.py:388
+#: ckanext/metadata_assistant/rules/engine.py:387
 msgid "The dataset has no resources. Add a file or a link to the data."
 msgstr ""
 
-#: ckanext/metadata_assistant/rules/links.py:55
+#: ckanext/metadata_assistant/rules/links.py:57
 #, python-brace-format
 msgid ""
 "The address '{address}' has a space in it. Addresses cannot contain "
 "spaces: remove it."
 msgstr ""
 
-#: ckanext/metadata_assistant/rules/links.py:59
+#: ckanext/metadata_assistant/rules/links.py:61
 #, python-brace-format
 msgid ""
 "The address '{address}' does not start with http:// or https://. Without "
 "it the link does not work."
 msgstr ""
 
-#: ckanext/metadata_assistant/rules/links.py:62
+#: ckanext/metadata_assistant/rules/links.py:64
 #, python-brace-format
 msgid ""
 "The address '{address}' starts with http://. If the site supports https, "
 "use that instead."
 msgstr ""
 
-#: ckanext/metadata_assistant/rules/links.py:81
+#: ckanext/metadata_assistant/rules/links.py:83
 #, python-brace-format
 msgid "(In the distribution '{name}'.)"
 msgstr ""
 
-#: ckanext/metadata_assistant/rules/translations.py:145
+#: ckanext/metadata_assistant/rules/translations.py:146
 #, python-brace-format
 msgid "'{field}' has no version in {language}. It is required."
 msgstr ""
 
-#: ckanext/metadata_assistant/rules/translations.py:147
+#: ckanext/metadata_assistant/rules/translations.py:148
 #, python-brace-format
 msgid "'{field}' has no version in {language}. It is recommended."
 msgstr ""
 
-#: ckanext/metadata_assistant/rules/translations.py:155
+#: ckanext/metadata_assistant/rules/translations.py:156
 #, python-brace-format
 msgid ""
 "'{field}' has changed since the version in {language} was last updated. "
