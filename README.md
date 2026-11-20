@@ -15,6 +15,8 @@ anything by itself.
 
 The extension adds a panel to CKAN's dataset edit form and a few administration pages.
 
+![The review panel in a dataset's edit form: the landing page has been read, the AI's suggestions are ready, and the first, a clearer title, waits for the editor](docs/images/review-panel.jpg)
+
 - **Rule check, no AI.** Deterministic checks of the dataset: missing required or recommended fields, a theme that is
   not in the vocabulary, a very short description, duplicate keywords, a missing licence, address slips, translations
   that are missing or out of date, and more (see [The rule check](#the-rule-check-1)). It runs in the browser form by
@@ -46,6 +48,8 @@ Every text the AI suggests must be read and applied by a person. This is how the
   multilingual fields and invents nothing.
 - The extension also stores AI *results* (not metadata): the latest review per dataset in a cache table, and
   translation proposals. See [Data handling](#data-handling).
+
+![One suggestion up close: the proposed description, with what it adds marked, can be edited before the editor uses it with the button](docs/images/ai-suggestion.jpg)
 
 ## Requirements and compatibility
 
@@ -227,6 +231,8 @@ The extension also reads CKAN's own `ckan.site_url`, `ckan.site_title` (sent to 
 
 ## The rule check
 
+![The rule check in the panel, without AI: a keyword given twice and a description that is too short](docs/images/rule-check.jpg)
+
 The rule engine (`ckanext.metadata_assistant.rules`) takes a dataset (the shape of `package_show`) and a *profile*
 and returns findings: a severity (`error`, `warning` or `info`), a stable code, a message in the page's language and
 the field it concerns. It has no network access and changes nothing. Individual rules cannot be switched off; only the
@@ -378,6 +384,8 @@ them.
 
 ### Landing pages
 
+![The panel says when the landing page was read; its facts inform the suggestions](docs/images/landing-page.jpg)
+
 **Make the landing page a recommended field.** The page is what the AI has most to go on: with it, the suggestions can
 say what the data contains, covers and how often it is updated; without it, the AI has only the texts in the form and
 mostly asks the editor. Many schemas have the landing page as optional (it is in DCAT-AP), and a form that folds optional
@@ -517,6 +525,8 @@ All commands are `ckan -c $CKAN_INI metadata-assistant <command>`:
 
 ## Translation proposals
 
+![Translation proposals: the English texts beside their Swedish and French translations, which an editor may correct, confirms having read, and applies](docs/images/translation-proposals.jpg)
+
 For a multilingual schema, the editor form can suggest translations of title, description and keywords into the
 schema's target languages (one AI request per language, so one that fails does not stop the others). For existing
 datasets in bulk, `propose-translations` stores proposals, and editors work through them at
@@ -559,6 +569,8 @@ own protection against private networks, for at most three addresses and twelve 
 opened with are not checked.
 
 ## Administration pages
+
+![The catalogue overview: what the rule check finds across all datasets, with how many datasets each finding concerns](docs/images/catalogue-overview.jpg)
 
 All for sysadmins, under `/ckan-admin/`:
 
