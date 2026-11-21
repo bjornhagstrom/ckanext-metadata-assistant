@@ -19,7 +19,7 @@ def long_description():
 
 setup(
     name="ckanext-metadata-assistant",
-    version="0.2.0",
+    version="0.2.1",
     description=(
         "Metadata review in the CKAN dataset form: a rule check, and AI suggestions and translations that an "
         "editor approves"
@@ -42,7 +42,7 @@ setup(
     include_package_data=True,
     # The AI connection (model, key, the call itself) is ckanext-ai-connector's, shared with other extensions. Its API may
     # still change in 0.x, so the pin stays within one minor version (0.2: models per purpose) until it is frozen at 1.0; ai.MIN_API says which API version this needs.
-    install_requires=["pydantic>=2,<3", "ckanext-ai-connector>=0.2,<0.3"],
+    install_requires=["pydantic>=2,<3", "ckanext-ai-connector>=0.2,<0.4"],
     # Kept so that `pip install ckanext-metadata-assistant[ai]` (older instructions) still works; ckanext-ai-connector brings
     # the libraries itself now.
     extras_require={"ai": []},

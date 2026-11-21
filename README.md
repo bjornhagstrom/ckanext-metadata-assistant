@@ -61,7 +61,7 @@ Every text the AI suggests must be read and applied by a person. This is how the
 - **Redis**, which CKAN already requires: used for the background job queue, the limits across workers and the
   landing page cache. Without a reachable Redis the extension still works, runs AI requests inside the web request,
   and applies no limits.
-- Installed with the extension: `pydantic>=2,<3` and [ckanext-ai-connector](https://github.com/bjornhagstrom/ckanext-ai-connector) (`>=0.2,<0.3` while
+- Installed with the extension: `pydantic>=2,<3` and [ckanext-ai-connector](https://github.com/bjornhagstrom/ckanext-ai-connector) (`>=0.2,<0.4` while
   its API may still change), which holds the AI connection (model, key, time limits, the call itself) that extensions
   share, and brings LiteLLM and `cryptography`. CKAN itself provides the other libraries the code imports (Flask, Click,
   Babel, PyYAML, requests, Redis and RQ). LiteLLM brings many dependencies of its own, so install into a test

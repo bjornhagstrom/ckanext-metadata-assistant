@@ -61,3 +61,20 @@ def test_a_purpose_with_a_model_of_its_own_is_ready_while_the_main_connection_is
     finally:
         purposes.forget("metadata_assistant", "translate")
         settings.forget_rows()
+
+
+def test_the_ai_settings_page_names_the_assistant_and_an_older_connector_still_takes_its_purposes(monkeypatch):
+    """API 3 gives the assistant's name for the page; with API 2 the purposes are declared without it."""
+    from ckanext.ai_connector import purposes
+
+    from ckanext.metadata_assistant import ai
+
+    if ai.api.API_VERSION >= 3:   # the assistant also runs with connector 0.2 (API 2), which has no names
+        ai.declare_purposes()
+        assert purposes.consumer_name("metadata_assistant") == "Metadata assistant"
+
+    seen = []
+    monkeypatch.setattr(ai.api, "API_VERSION", 2)
+    monkeypatch.setattr(ai.api, "declare_purposes", lambda consumer, labels: seen.append((consumer, sorted(labels))))
+    ai.declare_purposes()
+    assert seen == [("metadata_assistant", ["landing_page", "review", "translate"])]

@@ -5,6 +5,14 @@ is based on Keep a Changelog, and the project follows Semantic Versioning.
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-11-21
+
+### Changed
+
+- Works with ckanext-ai-connector 0.3 (`>=0.2,<0.4`).
+- With ckanext-ai-connector's API 3, the AI settings page names the assistant ("Metadata assistant") over its purposes,
+  not by its short name. Older versions of the connector work as before.
+
 ## [0.2.0] - 2026-11-20
 
 ### Added

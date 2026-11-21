@@ -23,8 +23,12 @@ def declare_purposes():
 
     if api is None or getattr(api, "API_VERSION", 1) < 2:
         return
-    api.declare_purposes(CONSUMER, {REVIEW: lambda: _("Metadata review"), TRANSLATE: lambda: _("Translation of metadata"),
-                                    LANDING_PAGE: lambda: _("Reading landing pages")})
+    labels = {REVIEW: lambda: _("Metadata review"), TRANSLATE: lambda: _("Translation of metadata"),
+              LANDING_PAGE: lambda: _("Reading landing pages")}
+    if getattr(api, "API_VERSION", 1) >= 3:   # the page names the extension over its purposes
+        api.declare_purposes(CONSUMER, labels, name=lambda: _("Metadata assistant"))
+    else:
+        api.declare_purposes(CONSUMER, labels)
 
 
 def problem(purpose=None):

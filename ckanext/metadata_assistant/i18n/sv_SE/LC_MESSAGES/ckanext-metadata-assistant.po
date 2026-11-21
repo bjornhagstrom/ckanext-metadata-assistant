@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-11-20 12:08+0100\n"
+"POT-Creation-Date: 2026-11-21 20:36+0100\n"
 "PO-Revision-Date: 2026-10-01 14:23+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: sv_SE\n"
@@ -80,7 +80,11 @@ msgstr "Översättning av metadata"
 msgid "Reading landing pages"
 msgstr "Läsning av landningssidor"
 
-#: ckanext/metadata_assistant/ai.py:36
+#: ckanext/metadata_assistant/ai.py:29
+msgid "Metadata assistant"
+msgstr "Metadataassistent"
+
+#: ckanext/metadata_assistant/ai.py:40
 msgid "The AI features need ckanext-ai-connector, which is not installed."
 msgstr "AI-funktionerna behöver ckanext-ai-connector, som inte är installerat."
 
@@ -314,7 +318,7 @@ msgstr ""
 
 #: ckanext/metadata_assistant/jobs.py:120
 #: ckanext/metadata_assistant/jobs.py:132
-#: ckanext/metadata_assistant/jobs.py:304
+#: ckanext/metadata_assistant/jobs.py:305
 msgid "The AI request failed."
 msgstr "AI-förfrågan misslyckades."
 
@@ -322,11 +326,11 @@ msgstr "AI-förfrågan misslyckades."
 msgid "Unknown kind of AI request."
 msgstr "Okänd sorts AI-förfrågan."
 
-#: ckanext/metadata_assistant/jobs.py:296
+#: ckanext/metadata_assistant/jobs.py:297
 msgid "The AI request is no longer there. Start it again."
 msgstr "AI-förfrågan finns inte kvar. Starta den igen."
 
-#: ckanext/metadata_assistant/jobs.py:306
+#: ckanext/metadata_assistant/jobs.py:307
 msgid "The AI request did not finish. Try again."
 msgstr "AI-förfrågan blev inte klar. Försök igen."
 
